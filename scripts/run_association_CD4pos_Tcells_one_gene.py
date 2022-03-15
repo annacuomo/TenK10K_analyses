@@ -113,7 +113,7 @@ assert all(hK_expanded.sample.values == sample_mapping["genotype_individual_id"]
 
 ## read in genotype file (plink format)
 plink_folder = mydir + "plink_files/"
-plink_file = plink_folder+"plink_chr"+str(chrom)+".bed"
+plink_file = plink_folder+"plink_chr"+str(arg["chrom"])+".bed"
 G = read_plink1_bin(plink_file)
 
 def cis_snp_selection(feature_id, annotation_df, G, window_size):
@@ -140,7 +140,7 @@ G_sel = cis_snp_selection(gene_name, anno_df, G, w)
 
 # expand out genotypes from cells to donors (and select relevant donors in the same step)
 G_expanded = G_sel.sel(sample=sample_mapping["individual_long"].values)
-assert all(hK_expanded.sample.values == G_expanded.sample.values)
+#assert all(hK_expanded.sample.values == G_expanded.sample.values)
 
 del G
 
