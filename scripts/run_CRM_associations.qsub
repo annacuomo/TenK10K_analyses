@@ -25,5 +25,5 @@ mkdir -p ct_name
 touch ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 > ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 
-$Rscript --vanilla run_MatrixQTL.R ${i} ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log 
+$python run_association_Tcells_one_gene.py ${chrom} ${i} ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log 
 
