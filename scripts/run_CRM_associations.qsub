@@ -1,3 +1,4 @@
+"run_CRM_associations.qsub" 36L, 647C
 ## SGE SETTINGS
 #$ -cwd
 #$ -S /bin/bash
@@ -25,12 +26,12 @@ chrom=${SGE_TASK_ID}
 # touch ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 # > ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 
-# ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log 
+# ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 
 for ((i=0; i <= 10; i++)); do
+<<<<<<< HEAD
     python $py_script $chrom $i 
+=======
+    python $py_script $chrom $i
+>>>>>>> 3eab0b6c1f60f8136f1374e1099a4581e9066a81
 done
-    
-    
-
-
