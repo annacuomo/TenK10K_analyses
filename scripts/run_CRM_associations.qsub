@@ -10,8 +10,6 @@
 #$ -e stderr_run_crm_assoc
 #$ -t 1-22
 
-# SGE_O_WORKDIR = /share/ScratchGeneral/anncuo # unnecessary??
-
 # Activate CellRegMap python environment
 conda activate cellregmap_notebook
 
@@ -30,10 +28,8 @@ chrom=${SGE_TASK_ID};
 
 # ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log 
 
-for ((chrom=1; chrom<=22; chrom++)); do
-    for ((i=0; i <= 10; i++)); do
+for ((i=0; i <= 10; i++)); do
         python $py_script $chrom $i 
-    done
 done
     
     
