@@ -18,15 +18,6 @@ py_script=$SGE_O_WORKDIR/run_association_CD4pos_Tcells_one_gene.py
 
 chrom=${SGE_TASK_ID}
 
-# touch ${chrom}_${i}.txt
-
-# mkdir -p ct_name
-
-# touch ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
-# > ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
-
-# ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
-
 for ((i=0; i <= 10; i++)); do
     python $py_script $chrom $i 
 done
