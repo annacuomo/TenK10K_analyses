@@ -1,8 +1,8 @@
+"run_CRM_associations.qsub" 36L, 647C
 ## SGE SETTINGS
 #$ -cwd
 #$ -S /bin/bash
 #$ -q short.q
-#$ -pe smp 1
 #$ -r yes
 #$ -l mem_requested=30G
 #$ -N run_crm_assoc
@@ -15,9 +15,9 @@ conda activate cellregmap_notebook
 
 cd $SGE_O_WORKDIR
 
-py_script = $SGE_O_WORKDIR/run_association_CD4pos_Tcells_one_gene.py
+py_script=$SGE_O_WORKDIR/run_association_CD4pos_Tcells_one_gene.py
 
-chrom=${SGE_TASK_ID};
+chrom=${SGE_TASK_ID}
 
 # touch ${chrom}_${i}.txt
 
@@ -26,8 +26,8 @@ chrom=${SGE_TASK_ID};
 # touch ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 # > ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 
-# ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log 
+# ct_name >> ./ct_name/chr${i}_run_MatrixQTL_ct_name.log
 
 for ((i=0; i <= 10; i++)); do
-        python $py_script $chrom $i 
+    python $py_script $chrom $i
 done
