@@ -15,10 +15,11 @@
 # Activate CellRegMap python environment
 conda activate cellregmap_notebook
 
-py_script =${SGE_O_WORKDIR}/github_repos/TenK10K_analyses_HPC/scripts/run_association_CD4pos_Tcells_one_gene.py
-gene_chr_files="${SGE_O_WORKDIR}/OneK1K/GeneLocations.tsv"
+py_script = $SGE_O_WORKDIR/run_association_CD4pos_Tcells_one_gene.py
+#py_script =/share/ScratchGeneral/anncuo/github_repos/TenK10K_analyses_HPC/scripts/run_association_CD4pos_Tcells_one_gene.py
+# gene_chr_files="${SGE_O_WORKDIR}/OneK1K/GeneLocations.tsv"
 
-# j=${SGE_TASK_ID};
+chrom=${SGE_TASK_ID};
 
 # touch ${chrom}_${i}.txt
 
