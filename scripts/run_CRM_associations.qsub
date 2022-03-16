@@ -31,7 +31,3 @@ chrom=${SGE_TASK_ID};
 for ((i=0; i <= 10; i++)); do
         python $py_script $chrom $i 
 done
-    
-    
-
-
