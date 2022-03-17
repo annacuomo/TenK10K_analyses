@@ -1,7 +1,7 @@
 import os
 import glob
 import pandas as pd
-import scipy as sp
+import numpy as np
 
 def smartAppend(table,name,value):
     """ helper function for appending in a dictionary """
@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
 
     for key in table.keys():
-        table[key] = sp.array(table[key])
+        table[key] = np.array(table[key])
 
     df = pd.DataFrame.from_dict(table)
     outfile = "summary.csv" 
