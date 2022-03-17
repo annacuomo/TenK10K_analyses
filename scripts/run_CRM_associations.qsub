@@ -3,7 +3,7 @@
 #$ -S /bin/bash
 #$ -q short.q
 #$ -r yes
-#$ -l mem_requested=30G
+#$ -l mem_requested=200G
 #$ -N run_crm_assoc
 #$ -o stdout_run_crm_assoc
 #$ -e stderr_run_crm_assoc
@@ -18,6 +18,6 @@ py_script=$SGE_O_WORKDIR/run_association_CD4pos_Tcells_one_gene.py
 
 chrom=${SGE_TASK_ID}
 
-for ((i=0; i <= 10; i++)); do
+for ((i=0; i <= 1000; i++)); do
     python $py_script $chrom $i 
 done
