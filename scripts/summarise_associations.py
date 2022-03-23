@@ -20,6 +20,7 @@ if __name__ == '__main__':
     table = {}
 
     for file in files:
+        #print(file)
         x += 1
         if x%500 == 0: 
             print(x)
