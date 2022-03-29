@@ -29,7 +29,7 @@ input_files_dir = mydir+"input_files_CellRegMap/"
 ######################################
 
 ## this file will map cells to donors 
-## in this case, it is limited to CD4 positive T cells only 
+## in this case, it is limited to T cells only 
 sample_mapping_file = input_files_dir+"smf_Tcells.csv"
 sample_mapping = pd.read_csv(sample_mapping_file, dtype={"individual_long": str, "genotype_individual_id": str, "phenotype_sample_id": str}, index_col=0)
 
@@ -62,6 +62,7 @@ genes = phenotype.trait.values
 ###### check if file already exists ######
 ##########################################
 
+# this definitely should be higher up at the very least, or this could be inserted into some sort of pipeline to take care of it?
 gene_name = genes[arg["i"]]
 
 folder = mydir + "CRM_association/all_Tcells/"
