@@ -1,0 +1,23 @@
+## SGE SETTINGS
+#$ -cwd
+#$ -S /bin/bash
+#$ -q short.q
+#$ -r yes
+#$ -l mem_requested=200G
+#$ -N run_crm_inter
+#$ -o stdout_run_crm_B
+#$ -e stderr_run_crm_B
+#$ -t 1-22
+
+# Activate CellRegMap python environment
+conda activate cellregmap_notebook
+
+cd $SGE_O_WORKDIR
+
+py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
+
+chrom=${SGE_TASK_ID}
+
+for ((i=0; i <= 1000; i++)); do
+    python $py_script $chrom $i 
+done
