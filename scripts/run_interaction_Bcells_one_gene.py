@@ -9,7 +9,7 @@ from numpy.linalg import cholesky
 import time
 from limix.qc import quantile_gaussianize
 
-from cellregmap import run_association_fast
+from cellregmap import run_interaction 
 
 
 arg = {}
@@ -38,25 +38,12 @@ donors0 = sample_mapping["genotype_individual_id"].unique()
 donors0.sort()
 print("Number of unique donors: {}".format(len(donors0)))
 
-######################################
-########### phenotype file ###########
-######################################
+# Filter on specific gene-SNP pairs
+# eQTL from B cells (B IN + B Mem)
+Bcell_eqtl_file = input_files_dir+"fvf_Bcell_eqtls.csv"
+Bcell_eqtl = pd.read_csv(Bcell_eqtl_file, index_col = 0)
 
-# open anndata 
-my_file = mydir + "expression_objects/sce"+str(arg["chrom"])+".h5ad"
-adata = sc.read(my_file)
-# sparse to dense
-mat = adata.raw.X.todense()
-# make pandas dataframe
-mat_df = pd.DataFrame(data=mat.T, index=adata.raw.var.index, columns=adata.obs.index)
-# turn into xr array
-phenotype = xr.DataArray(mat_df.values, dims=["trait", "cell"], coords={"trait": mat_df.index.values, "cell": mat_df.columns.values})
-phenotype = phenotype.sel(cell=sample_mapping["phenotype_sample_id"].values)
-
-del mat
-del mat_df
-
-genes = phenotype.trait.values
+genes = Bcell_eqtl[Bcell_eqtl['chrom']==int(arg["chrom"])]['feature'].unique()
 
 ##########################################
 ###### check if file already exists ######
@@ -116,15 +103,8 @@ plink_folder = mydir + "plink_files/"
 plink_file = plink_folder+"plink_chr"+str(arg["chrom"])+".bed"
 G = read_plink1_bin(plink_file)
 
-# Filter on specific gene-SNP pairs
-# eQTL from B cells (B IN + B Mem)
-Bcell_eqtl_file = input_files_dir+"fvf_Bcell_eqtls.csv"
-Bcell_eqtl = pd.read_csv(Bcell_eqtl_file, index_col = 0)
-
-genes = Bcell_eqtl[Bcell_eqtl['chrom']==int(chrom)]['feature'].unique()
-
 leads = Bcell_eqtl[Bcell_eqtl['feature']==gene_name]['snp_id'].unique()
-G_sel = cis_snp_selection(gene_name, anno_df, G, w)
+G_sel = G[:,G['snp'].isin(leads)]
 
 # expand out genotypes from cells to donors (and select relevant donors in the same step)
 G_expanded = G_sel.sel(sample=sample_mapping["individual_long"].values)
@@ -133,11 +113,29 @@ G_expanded = G_sel.sel(sample=sample_mapping["individual_long"].values)
 del G
 
 ######################################
+########### phenotype file ###########
+######################################
+
+# open anndata 
+my_file = mydir + "expression_objects/sce"+str(arg["chrom"])+".h5ad"
+adata = sc.read(my_file)
+# sparse to dense
+mat = adata.raw.X.todense()
+# make pandas dataframe
+mat_df = pd.DataFrame(data=mat.T, index=adata.raw.var.index, columns=adata.obs.index)
+# turn into xr array
+phenotype = xr.DataArray(mat_df.values, dims=["trait", "cell"], coords={"trait": mat_df.index.values, "cell": mat_df.columns.values})
+phenotype = phenotype.sel(cell=sample_mapping["phenotype_sample_id"].values)
+
+del mat
+del mat_df
+
+######################################
 ############ context file ############
 ######################################
 
-# cells by PCs (10)
-C_file = input_files_dir+"PCs.csv.pkl"
+# cells by PCs (B cells only)
+C_file = input_files_dir+"PCs_Bcells.csv.pkl"
 C = pd.read_pickle(C_file)
 C = xr.DataArray(C.values, dims=["cell", "pc"], coords={"cell": C.index.values, "pc": C.columns.values})
 C = C.sel(cell=sample_mapping["phenotype_sample_id"].values)
@@ -155,8 +153,6 @@ W = ones((n_cells, 1)) # just intercept as covariates
 # select gene
 y = phenotype.sel(trait=gene_name)
 
-
-
 y = quantile_gaussianize(y)
 y = y.values.reshape(y.shape[0],1)
 
@@ -168,7 +164,7 @@ del G_sel
 
 print("Running for gene {}".format(gene_name))
 
-pvals = run_association_fast(y, W, C.values[:,0:10], G=GG, hK=hK_expanded)[0]
+pvals = run_interaction(y=y, W=W, E=C.values[:,0:10], G=GG, hK=hK_expanded)[0]
 
 pv = pd.DataFrame({"chrom":G_expanded.chrom.values,
                "pv":pvals,
