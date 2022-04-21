@@ -47,7 +47,7 @@ if __name__ == '__main__':
         for key in temp.keys():
             smartAppend(table, key, temp[key])
 
-
+    print(x)
     for key in table.keys():
         table[key] = np.array(table[key])
 
