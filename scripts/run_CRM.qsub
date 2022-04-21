@@ -12,7 +12,8 @@
 # Activate CellRegMap python environment
 conda activate cellregmap_notebook
 
-py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
+# py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
+py_script=$SGE_O_WORKDIR/estimate_betas_Bcells_one_gene.py
 
 chrom=${SGE_TASK_ID}
 
