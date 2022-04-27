@@ -157,7 +157,7 @@ y = phenotype.sel(trait=gene_name)
 y = quantile_gaussianize(y)
 y = y.values.reshape(y.shape[0],1)
 
-del phenotype
+#del phenotype
 
 GG = G_expanded.values
 
