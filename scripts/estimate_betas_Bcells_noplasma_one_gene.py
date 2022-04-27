@@ -52,7 +52,7 @@ genes = Bcell_eqtl[Bcell_eqtl['chrom']==int(arg["chrom"])]['feature'].unique()
 
 gene_name = genes[arg["i"]]
 
-folder = mydir + "CRM_interaction/Bcells_Bcell_eQTLs/betas/"
+folder = mydir + "CRM_interaction/Bcells_noplasma_Bcell_eQTLs/betas/"
 outfilename = f"{folder}{gene_name}"
 print(outfilename)
 outfilename_betaGxC = outfilename+"_betaGxC.csv"
@@ -137,13 +137,11 @@ del mat_df
 ######################################
 
 # cells by PCs (B cells only)
-C_file = input_files_dir+"PCs_Bcells.csv.pkl"
-C = pd.read_pickle(C_file)
+C_file = input_files_dir+"PCs_Bcells_noplasma.csv"
+C = pd.read_csv(C_file, index_col = 0)
 C = xr.DataArray(C.values, dims=["cell", "pc"], coords={"cell": C.index.values, "pc": C.columns.values})
 C = C.sel(cell=sample_mapping["phenotype_sample_id"].values)
 assert all(C.cell.values == sample_mapping["phenotype_sample_id"].values)
-
-# C_gauss = quantile_gaussianize(C)
 
 ######################################
 ########### Prepare model ############
