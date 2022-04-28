@@ -174,7 +174,7 @@ for snp in snps:
 
 print("Running for gene {}".format(gene_name))
 
-betas = estimate_betas(y=y, W=W, E=C.values[:,0:10], G=GG, hK=hK_expanded, mafs=mafs)
+betas = estimate_betas(y=y, W=W, E=C.values[:,0:10], G=GG, hK=hK_expanded, maf=mafs)
 beta_G = betas[0]
 beta_GxC = betas[1][0]
 
