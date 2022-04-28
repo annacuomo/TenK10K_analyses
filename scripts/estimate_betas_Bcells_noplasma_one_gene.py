@@ -164,7 +164,7 @@ del G_sel
 
 # get MAF
 MAF_dir = mydir + "/snps_with_maf_greaterthan0.05/"
-myfile = MAF_dir+"chr"+str(chrom)+".SNPs.txt"
+myfile = MAF_dir+"chr"+str(arg["chrom"])+".SNPs.txt"
 df_maf = pd.read_csv(myfile, sep="\t")
 
 snps = G_expanded["snp"].values
