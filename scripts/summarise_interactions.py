@@ -9,7 +9,7 @@ def smartAppend(table,name,value):
         table[name] = []
     table[name].append(value)
 
-path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_association/CD4pos_Tcells/"
+path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/"
 
 if __name__ == '__main__':
 
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         for key in temp.keys():
             smartAppend(table, key, temp[key])
 
-
+    print(x)
     for key in table.keys():
         table[key] = np.array(table[key])
 

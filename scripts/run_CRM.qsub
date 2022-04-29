@@ -3,7 +3,7 @@
 #$ -S /bin/bash
 #$ -q short.q
 #$ -r yes
-#$ -l mem_requested=200G
+#$ -l mem_requested=400G
 #$ -N run_crm_inter
 #$ -o stdout_run_crm_B
 #$ -e stderr_run_crm_B
@@ -12,9 +12,8 @@
 # Activate CellRegMap python environment
 conda activate cellregmap_notebook
 
-cd $SGE_O_WORKDIR
-
-py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
+# py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
+py_script=$SGE_O_WORKDIR/estimate_betas_Bcells_one_gene.py
 
 chrom=${SGE_TASK_ID}
 
