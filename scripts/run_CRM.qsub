@@ -1,22 +1,23 @@
 ## SGE SETTINGS
 #$ -cwd
 #$ -S /bin/bash
-#$ -q short.q
+#$ -q long.q
 #$ -r yes
 #$ -l mem_requested=400G
 #$ -N run_crm_inter
 #$ -o stdout_run_crm_B
 #$ -e stderr_run_crm_B
 #$ -t 1-22
+#$ -m ae -M a.cuomo@garvan.org.au
 
 # Activate CellRegMap python environment
 conda activate cellregmap_notebook
 
-# py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
-py_script=$SGE_O_WORKDIR/estimate_betas_Bcells_one_gene.py
+py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
+# py_script=$SGE_O_WORKDIR/estimate_betas_Bcells_one_gene.py
 
 chrom=${SGE_TASK_ID}
 
-for ((i=0; i <= 1000; i++)); do
+for ((i=0; i <= 100; i++)); do
     python $py_script $chrom $i 
 done
