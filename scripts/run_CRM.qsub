@@ -7,7 +7,7 @@
 #$ -N run_crm_inter
 #$ -o stdout_run_crm_B
 #$ -e stderr_run_crm_B
-#$ -t 1-22
+#$ -t 2
 #$ -m ae -M a.cuomo@garvan.org.au
 
 # Activate CellRegMap python environment
