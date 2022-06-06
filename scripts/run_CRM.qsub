@@ -16,8 +16,8 @@ conda activate cellregmap_notebook
 py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
 # py_script=$SGE_O_WORKDIR/estimate_betas_Bcells_one_gene.py
 
-fvf = /share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/fvf_Bcell_eqtls.csv
-OUTPUT_DIR = /share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/
+fvf=/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/fvf_Bcell_eqtls.csv
+OUTPUT_DIR=/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/
 
 # chr=${SGE_TASK_ID}
 chr=22
