@@ -20,10 +20,10 @@ fvf = /share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/fvf_Bcell_eqtls
 OUTPUT_DIR = /share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/
 
 chr=${SGE_TASK_ID}
-N = $(cat $fvf | awk -F ',' '$4==${chr}' | wc -l)
+N=$(cat $fvf | awk -v chrom="$chr" -F ',' '$4 == chrom' | wc -l)
 
 for ((i=0; i <= N; i++)); do
-    GENE = $(cat "$fvf" | awk -F ',' '$4==${chr}' | sed -n ${i}p | awk -F "," '{print $2}')
+    GENE = $(cat "$fvf" | awk -v chrom="$chr" -F ',' '$4==chrom' | sed -n ${i}p | awk -F "," '{print $2}')
     OUTPUT_FILE=${OUTPUT_DIR}/${GENE}.tsv # Expected output filename
     if [ ! -f "$OUTPUT_FILE" ] # This asks, "If this file doesn't exist"
     then 
