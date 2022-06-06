@@ -16,8 +16,17 @@ conda activate cellregmap_notebook
 py_script=$SGE_O_WORKDIR/run_interaction_Bcells_one_gene.py
 # py_script=$SGE_O_WORKDIR/estimate_betas_Bcells_one_gene.py
 
-chrom=${SGE_TASK_ID}
+fvf = /share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/fvf_Bcell_eqtls.csv
+OUTPUT_DIR = /share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/
 
-for ((i=0; i <= 100; i++)); do
-    python $py_script $chrom $i 
+chr=${SGE_TASK_ID}
+N = $(cat $fvf | awk -F ',' '$4==${chr}' | wc -l)
+
+for ((i=0; i <= N; i++)); do
+    GENE = $(cat "$fvf" | awk -F ',' '$4==${chr}' | sed -n ${i}p | awk -F "," '{print $2}')
+    OUTPUT_FILE=${OUTPUT_DIR}/${GENE}.tsv # Expected output filename
+    if [ ! -f "$OUTPUT_FILE" ] # This asks, "If this file doesn't exist"
+    then 
+    python $py_script $chr $i  # Run Python script
+    fi
 done
