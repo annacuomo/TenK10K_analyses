@@ -3,7 +3,7 @@
 #$ -S /bin/bash
 #$ -q long.q
 #$ -r yes
-#$ -l mem_requested=400G
+#$ -l mem_requested=800G
 #$ -N run_crm_inter
 #$ -o stdout_run_crm_B
 #$ -e stderr_run_crm_B
@@ -20,11 +20,11 @@ fvf=/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/fvf_Bcell_eqtls.c
 OUTPUT_DIR=/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/
 
 # chr=${SGE_TASK_ID}
-chr=22
+chr=21
 N=$(cat $fvf | awk -v chrom="$chr" -F ',' '$4 == chrom' | wc -l)
 
 for ((i=0; i <= N; i++)); do
-    GENE = $(cat "$fvf" | awk -v chrom="$chr" -F ',' '$4==chrom' | sed -n ${i}p | awk -F "," '{print $2}')
+    GENE=$(cat "$fvf" | awk -v chrom="$chr" -F ',' '$4==chrom' | sed -n ${i}p | awk -F "," '{print $2}')
     OUTPUT_FILE=${OUTPUT_DIR}/${GENE}.tsv # Expected output filename
     if [ ! -f "$OUTPUT_FILE" ] # This asks, "If this file doesn't exist"
     then 
