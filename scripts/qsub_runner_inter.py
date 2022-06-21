@@ -1,5 +1,3 @@
-#!/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/cellregmap_notebook/bin/python 
-
 import os
 import pandas as pd
 
@@ -10,7 +8,7 @@ if __name__ == '__main__':
     fvf = pd.read_csv(fvf_filename, index_col = 0)
 
     print("prepare job to submit")
-    qsub = "qsub -cwd -l mem_requested=800G -q short.q -r yes -N run_crm_inter -o stdout_run_crm -e stderr_run_crm_B -m ae -M a.cuomo@garvan.org.au"
+    qsub = "qsub #!/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/cellregmap_notebook/bin/python -cwd -l mem_requested=200G -q short.q -r yes -N run_crm_inter -o stdout_run_crm -e stderr_run_crm_B -m ae -M a.cuomo@garvan.org.au"
     
     
     for j in range(1):
