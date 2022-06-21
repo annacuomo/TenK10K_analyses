@@ -43,7 +43,7 @@ print("Number of unique donors: {}".format(len(donors0)))
 mono_eqtl_file = input_files_dir+"fvf_Monocyte_eqtls.csv"
 mono_eqtl = pd.read_csv(mono_eqtl_file, index_col = 0)
 
-genes = mono_eqtl[mono_eqtl['chrom']==int(chrom)]['feature'].unique()
+genes = mono_eqtl[mono_eqtl['chrom']==int(arg["chrom"])]['feature'].unique()
 
 ##########################################
 ###### check if file already exists ######
