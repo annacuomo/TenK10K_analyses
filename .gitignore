@@ -5,5 +5,6 @@ scripts/run_inter.sh
 # Folders
 scripts/stderr_run_crm_B
 scripts/stderr_run_crm_assoc
+scripts/stdout_run_crm
 scripts/stdout_run_crm_B
 scripts/stdout_run_crm_assoc
