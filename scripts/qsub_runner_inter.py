@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
         for i in range(len(genes)):
 
-            py = f"python run_interaction_Bcells_one_gene.py ${chrom} ${i}"
+            py = f"python run_interaction_Bcells_one_gene.py {chrom} {i}"
             cmd = f"{qsub} \"{py}\" "
             print(cmd)
             os.system(cmd)
