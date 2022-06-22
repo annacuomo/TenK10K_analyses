@@ -4,11 +4,11 @@ import pandas as pd
 if __name__ == '__main__':
 
     inputs_folder = "/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/"
-    fvf_filename = inputs_folder+"fvf_Monocyte_eqtls.csv"
+    fvf_filename = inputs_folder+"fvf_Bcell_eqtls.csv"
     fvf = pd.read_csv(fvf_filename, index_col = 0)
 
     print("prepare job to submit")
-    qsub = "qsub -cwd -l mem_requested=200G -q short.q -r yes -N run_crm_inter_py -o stdout_run_crm_B -e stderr_run_crm_B -m ae -M a.cuomo@garvan.org.au -b y"
+    qsub = "qsub -cwd -l mem_requested=800G -q short.q -r yes -N run_crm_inter_py -o stdout_run_crm_B -e stderr_run_crm_B -m ae -M a.cuomo@garvan.org.au -b y"
     
     
     for j in range(1):
