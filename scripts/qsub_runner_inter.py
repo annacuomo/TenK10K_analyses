@@ -8,7 +8,7 @@ if __name__ == '__main__':
     fvf = pd.read_csv(fvf_filename, index_col = 0)
 
     print("prepare job to submit")
-    qsub = "qsub -cwd -l mem_requested=200G -q short.q -r yes -N run_crm_inter_py -o stdout_run_crm -e stderr_run_crm_B -m ae -M a.cuomo@garvan.org.au -b y"
+    qsub = "qsub -cwd -l mem_requested=200G -q short.q -r yes -N run_crm_inter_py -o stdout_run_crm_B -e stderr_run_crm_B -m ae -M a.cuomo@garvan.org.au -b y"
     
     
     for j in range(1):
