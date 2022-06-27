@@ -4,7 +4,8 @@ import pandas as pd
 if __name__ == '__main__':
 
     inputs_folder = "/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/"
-    fvf_filename = inputs_folder+"fvf_Bcell_eqtls.csv"
+    # fvf_filename = inputs_folder+"fvf_Bcell_eqtls.csv"
+    fvf_filename = inputs_folder+"fvf_Monocyte_eqtls.csv"
     fvf = pd.read_csv(fvf_filename, index_col = 0)
 
     print("prepare job to submit")
@@ -19,7 +20,8 @@ if __name__ == '__main__':
 
         for i in range(len(genes)):
 
-            py = f"/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/cellregmap_notebook/bin/python run_interaction_Bcells_one_gene.py {chrom} {i}"
+            # py = f"/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/cellregmap_notebook/bin/python run_interaction_Bcells_one_gene.py {chrom} {i}"
+            py = f"/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/cellregmap_notebook/bin/python run_interaction_Monocytes_sex_one_gene.py {chrom} {i}"
             cmd = f"{qsub} \"{py}\" "
             print(cmd)
             os.system(cmd)
