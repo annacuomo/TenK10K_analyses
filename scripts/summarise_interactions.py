@@ -10,7 +10,7 @@ def smartAppend(table,name,value):
     table[name].append(value)
 
 path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/"
-#path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Monocytes_Mono_eQTLs/sex_interactions/"
+path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Monocytes_Mono_eQTLs/sex_interactions/"
 
 if __name__ == '__main__':
 
