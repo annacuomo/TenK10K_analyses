@@ -15,7 +15,7 @@ if __name__ == '__main__':
     for j in range(22):
 
         chrom = j+1
-        if chrom in [4,8,9,10,13,14,15,16,18,20,21,22]: continue
+        # if chrom not in [1, 4]: continue # ad hoc in case some chromosomes are already finished
         genes = fvf[fvf['chrom']==int(chrom)]['feature'].unique()
 
         for i in range(len(genes)):
