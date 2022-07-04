@@ -1,5 +1,6 @@
 import os
 import sys
+import numpy as np
 import scanpy as sc
 import pandas as pd
 import xarray as xr
@@ -29,8 +30,8 @@ input_files_dir = mydir+"input_files_CellRegMap/"
 ######################################
 
 ## this file will map cells to donors 
-## in this case, it is limited to B cells only 
-sample_mapping_file = input_files_dir+"smf_Bcells.csv"
+## here, Monocytes only
+sample_mapping_file = input_files_dir+"smf_monocytes.csv"
 sample_mapping = pd.read_csv(sample_mapping_file, dtype={"individual_long": str, "genotype_individual_id": str, "phenotype_sample_id": str}, index_col=0)
 
 ## extract unique individuals
@@ -39,11 +40,11 @@ donors0.sort()
 print("Number of unique donors: {}".format(len(donors0)))
 
 # Filter on specific gene-SNP pairs
-# eQTL from B cells (B IN + B Mem)
-Bcell_eqtl_file = input_files_dir+"fvf_Bcell_eqtls.csv"
-Bcell_eqtl = pd.read_csv(Bcell_eqtl_file, index_col = 0)
+# eQTL from Monocytes (Mono NC + Mono C) that were significantly sex-biased
+mono_eqtl_file = input_files_dir+"sex_beta_fvf_Monocyte.csv"
+mono_eqtl = pd.read_csv(mono_eqtl_file, index_col = 0)
 
-genes = Bcell_eqtl[Bcell_eqtl['chrom']==int(arg["chrom"])]['feature'].unique()
+genes = mono_eqtl[mono_eqtl['chrom']==int(arg["chrom"])]['feature'].unique()
 
 ##########################################
 ###### check if file already exists ######
@@ -51,9 +52,10 @@ genes = Bcell_eqtl[Bcell_eqtl['chrom']==int(arg["chrom"])]['feature'].unique()
 
 gene_name = genes[arg["i"]]
 
-folder = mydir + "CRM_interaction/Bcells_Bcell_eQTLs/betas/"
+folder = mydir + "CRM_interaction/Monocytes_Mono_eQTLs/sex_interactions/betas/"
 outfilename = f"{folder}{gene_name}"
 print(outfilename)
+
 outfilename_betaGxC = outfilename+"_betaGxC.csv"
 
 if os.path.exists(outfilename_betaGxC):
@@ -104,7 +106,7 @@ plink_folder = mydir + "plink_files/"
 plink_file = plink_folder+"plink_chr"+str(arg["chrom"])+".bed"
 G = read_plink1_bin(plink_file)
 
-leads = Bcell_eqtl[Bcell_eqtl['feature']==gene_name]['snp_id'].unique()
+leads = mono_eqtl[mono_eqtl['feature']==gene_name]['snp_id'].unique()
 G_sel = G[:,G['snp'].isin(leads)]
 
 # expand out genotypes from cells to donors (and select relevant donors in the same step)
@@ -135,9 +137,9 @@ del mat_df
 ############ context file ############
 ######################################
 
-# cells by PCs (B cells only)
-C_file = input_files_dir+"PCs_Bcells.csv.pkl"
-C = pd.read_pickle(C_file)
+# cells (Monocytes only) by PCs + sex + age
+C_file = input_files_dir+"PCs_sex_age_monocytes.csv"
+C = pd.read_csv(C_file, index_col = 0)
 C = xr.DataArray(C.values, dims=["cell", "pc"], coords={"cell": C.index.values, "pc": C.columns.values})
 C = C.sel(cell=sample_mapping["phenotype_sample_id"].values)
 assert all(C.cell.values == sample_mapping["phenotype_sample_id"].values)
@@ -157,15 +159,26 @@ y = phenotype.sel(trait=gene_name)
 y = quantile_gaussianize(y)
 y = y.values.reshape(y.shape[0],1)
 
-#del phenotype
+del phenotype
 
 GG = G_expanded.values
 
 del G_sel
 
+# get MAF
+MAF_dir = mydir + "snps_with_maf_greaterthan0.05/"
+myfile = MAF_dir+"chr"+str(arg['chrom'])+".SNPs.txt"
+df_maf = pd.read_csv(myfile, sep="\t")
+
+snps = G_expanded["snp"].values
+mafs = np.array([])
+for snp in snps:
+    mafs = np.append(mafs, df_maf[df_maf["SNP"] == snp]["MAF"].values)
+
 print("Running for gene {}".format(gene_name))
 
-betas = estimate_betas(y=y, W=W, E=C.values[:,0:10], G=GG, hK=hK_expanded)
+betas = estimate_betas(y=y, W=W, E=C.values[:,0:1], E1=C.values[:,0:12], E2=C.values[:,0:12], G=GG, hK=hK_expanded, maf=mafs)
+
 beta_G = betas[0]
 beta_GxC = betas[1][0]
 
@@ -173,10 +186,12 @@ beta_G_df = pd.DataFrame({"chrom":G_expanded.chrom.values,
                "betaG":beta_G,
                "variant":G_expanded.snp.values})
 
-beta_G_df.to_csv(outfilename+"_betaG.csv")
+beta_G_df.to_csv(out_filename+"_betaG.csv")
 
 cells = phenotype["cell"].values
 snps = G_expanded["variant"].values
 
-beta_GxC_df = pd.DataFrame(data = beta_GxC, columns=snps, index=cells)
+beta_GxC_df = pd.DataFrame(data = beta_GxC, columns = snps, index = cells) 
+beta_GxC_df.head()
+
 beta_GxC_df.to_csv(outfilename_betaGxC)
