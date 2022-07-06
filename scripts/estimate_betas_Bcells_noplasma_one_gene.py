@@ -40,8 +40,8 @@ donors0.sort()
 print("Number of unique donors: {}".format(len(donors0)))
 
 # Filter on specific gene-SNP pairs
-# eQTL from B cells (B IN + B Mem)
-Bcell_eqtl_file = input_files_dir+"fvf_Bcell_eqtls.csv"
+# eQTL from B cells (B IN + B Mem) w significant GxC
+Bcell_eqtl_file = input_files_dir+"fvf_Bcell_betas.csv"
 Bcell_eqtl = pd.read_csv(Bcell_eqtl_file, index_col = 0)
 
 genes = Bcell_eqtl[Bcell_eqtl['chrom']==int(arg["chrom"])]['feature'].unique()

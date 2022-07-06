@@ -159,7 +159,7 @@ y = phenotype.sel(trait=gene_name)
 y = quantile_gaussianize(y)
 y = y.values.reshape(y.shape[0],1)
 
-del phenotype
+#del phenotype
 
 GG = G_expanded.values
 
@@ -186,7 +186,7 @@ beta_G_df = pd.DataFrame({"chrom":G_expanded.chrom.values,
                "betaG":beta_G,
                "variant":G_expanded.snp.values})
 
-beta_G_df.to_csv(out_filename+"_betaG.csv")
+beta_G_df.to_csv(outfilename+"_betaG.csv")
 
 cells = phenotype["cell"].values
 snps = G_expanded["variant"].values
