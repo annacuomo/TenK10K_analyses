@@ -1,4 +1,5 @@
 import os
+import re
 import glob
 import pandas as pd
 import numpy as np
@@ -10,7 +11,7 @@ def smartAppend(table,name,value):
     table[name].append(value)
 
 path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/"
-#path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Monocytes_Mono_eQTLs/sex_interactions/"
+# path_results = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Monocytes_Mono_eQTLs/sex_interactions/"
 
 if __name__ == '__main__':
 
@@ -21,8 +22,8 @@ if __name__ == '__main__':
     table = {}
 
     for file in files:
-        breakpoint()
-        #print(file)
+        # breakpoint()
+        # print(file)
         x += 1
         if x%500 == 0: 
             print(x)
@@ -32,7 +33,8 @@ if __name__ == '__main__':
             continue
         line = str(file).split("/")
         # print(line)
-        gene = str(line[-1]).split(".")[0]
+        # gene = str(line[-1]).split(".")[0]
+        gene = re.sub(".tsv","",str(line[-1]))
         # print(gene)
         chrom = df['chrom'].values[0]
         # print(chrom)
