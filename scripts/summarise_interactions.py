@@ -21,6 +21,7 @@ if __name__ == '__main__':
     table = {}
 
     for file in files:
+        breakpoint()
         #print(file)
         x += 1
         if x%500 == 0: 
