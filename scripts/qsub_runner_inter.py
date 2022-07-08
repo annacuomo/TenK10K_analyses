@@ -11,13 +11,13 @@ if __name__ == '__main__':
     fvf = pd.read_csv(fvf_filename, index_col = 0)
 
     print("prepare job to submit")
-    qsub = "qsub -cwd -l mem_requested=500G -q short.q -r yes -N run_crm_inter_py -o stdout_run_crm_mono -e stderr_run_crm_mono -m ae -M a.cuomo@garvan.org.au -b y"
+    qsub = "qsub -cwd -l mem_requested=600G -q short.q -r yes -N run_crm_inter_py -o stdout_run_crm_mono -e stderr_run_crm_mono -m ae -M a.cuomo@garvan.org.au -b y"
     
     
     for j in range(22):
 
         chrom = j+1
-        # if chrom not in [2, 4, 20]: continue # ad hoc in case some chromosomes are already finished
+        if chrom not in [2, 4, 6, 8, 9, 10, 11, 12, 17, 22]: continue # ad hoc in case some chromosomes are already finished
         genes = fvf[fvf['chrom']==int(chrom)]['feature'].unique()
 
         for i in range(len(genes)):
