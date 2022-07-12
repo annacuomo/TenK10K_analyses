@@ -1,0 +1,5 @@
+{
+  "argv": ["/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/r_notebook/lib/R/bin/R", "--slave", "-e", "IRkernel::main()", "--args", "{connection_file}"],
+  "display_name": "Single Cell Notebook (R 4.1.2)",
+  "language": "R"
+}

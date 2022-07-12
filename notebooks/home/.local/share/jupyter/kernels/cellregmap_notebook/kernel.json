@@ -1,0 +1,14 @@
+{
+ "argv": [
+  "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/cellregmap_notebook/bin/python",
+  "-m",
+  "ipykernel_launcher",
+  "-f",
+  "{connection_file}"
+ ],
+ "display_name": "Python (Jupyter - cellregmap)",
+ "language": "python",
+ "metadata": {
+  "debugger": true
+ }
+}

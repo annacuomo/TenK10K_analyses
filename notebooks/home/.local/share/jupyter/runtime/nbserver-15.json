@@ -1,0 +1,12 @@
+{
+  "base_url": "/",
+  "hostname": "0.0.0.0",
+  "notebook_dir": "/home/anncuo",
+  "password": false,
+  "pid": 15,
+  "port": 8888,
+  "secure": false,
+  "sock": "",
+  "token": "39e8a237529827db159f5d07572bc52c5f8396fa19858f5c",
+  "url": "http://0.0.0.0:8888/"
+}

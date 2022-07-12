@@ -1,0 +1,4 @@
+pkgs_dirs:
+  - /share/ScratchGeneral/anncuo/jupyter/conda_notebooks/pkgs
+envs_dirs:
+  - /share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs
