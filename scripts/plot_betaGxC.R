@@ -10,6 +10,7 @@ df_to_plot = phate_df
 
 summary_betaGxC_file = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_noplasma_Bcell_eQTLs/betas/summary_betaGxC.csv"
 df1 = read.csv(summary_betaGxC_file, row.names=1)
+df1$barcode = rownames(df1)
 
 for (gene in colnames(df1)){
     print(gene)
