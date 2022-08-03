@@ -10,6 +10,8 @@ df1$barcode = rownames(df1)
 
 for (gene in colnames(df1)){
     print(gene)
+    if (gene == "barcode"){next}
+    if (gene == "RP11.434C1.1.12.11351211"){next}
     # check if file already exists
     fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/pseudotime_vs_betaGxC/"
     filename = paste0(fig_dir,gene,".pdf")

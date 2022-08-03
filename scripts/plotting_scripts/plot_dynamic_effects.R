@@ -56,7 +56,7 @@ for (i in 1:nrow(sign_results)){
     df_snps <- df_snps %>% filter(SNP==eSNP_letter)
     A1 <- df_snps$'REF(0)'
     A2 <- df_snps$'ALT(1)'
-    if (2 %in% unique(pt_geno_expr$genotype) == F){pt_geno_expr$genotype <- factor(pt_geno_expr$genotype, labels=c(paste0(A1,A1), paste0(A1,A2), paste0(A2,A2)))}
+    if (2 %in% unique(pt_geno_expr$genotype) == F){pt_geno_expr$genotype <- factor(pt_geno_expr$genotype, labels=c(paste0(A1,A1), paste0(A1,A2)))}
     else {pt_geno_expr$genotype <- factor(pt_geno_expr$genotype, labels=c(paste0(A1,A1), paste0(A1,A2), paste0(A2,A2)))}
     ## save plot
     pdf(filename, width=10, height=6)
