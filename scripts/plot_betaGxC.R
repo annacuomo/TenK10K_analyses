@@ -23,7 +23,7 @@ for (gene in colnames(df1)){
     ## save plot
     pdf(filename, width=8, height=6)
     myplot <- ggplot(df2, aes(x = PHATE_2, y = PHATE_1, colour = beta)) + geom_point(alpha=0.2) + 
-        theme_classic() + scale_colour_gradientn(colors = brewer.pal(9,"Spectral")) + ggtitle(gene))
+        theme_classic() + scale_colour_gradientn(colors = brewer.pal(9,"Spectral")) + ggtitle(gene)
     print(myplot)
     dev.off()
 }
