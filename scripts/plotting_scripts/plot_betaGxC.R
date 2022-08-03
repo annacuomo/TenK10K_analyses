@@ -1,6 +1,7 @@
 library(dplyr)
 library(ggplot2)
 library(Seurat)
+library(RColorBrewer)
 
 sceb_filename = "/share/ScratchGeneral/anncuo/OneK1K/b_cells_phate_slingshot.RDS"
 sceb = readRDS(sceb_filename)
