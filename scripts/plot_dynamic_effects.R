@@ -28,7 +28,7 @@ for (i in 1:nrow(sign_results)){
     print(c(i,round(i/nrow(sign_results)*100), digits=2))
     genename = sign_results$gene[i]
     snp = sign_results$snp_id[i]
-    rsid = df_hrc[grep(snp,df_hrc$snpid),]$ID
+    rsid = df_hrc[grep(snp,df_hrc$snpid),]$ID[1]
     # check if file already exists
     fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/pseudo_gene_by_genotype/"
     filename = paste0(fig_dir,genename,"-",rsid,".pdf")
