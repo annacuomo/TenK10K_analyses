@@ -7,12 +7,13 @@ sceb = readRDS(sceb_filename)
 
 phate_df = as.data.frame(Embeddings(sceb, reduction = "phate"))
 df_to_plot = phate_df
-print(head(df_to_plot))
+df_to_plot$barcode = rownames(df_to_plot)
+# print(head(df_to_plot))
 
 summary_betaGxC_file = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_noplasma_Bcell_eQTLs/betas/summary_betaGxC.csv"
 df1 = read.csv(summary_betaGxC_file, row.names=1)
 df1$barcode = rownames(df1)
-print(head(df1))
+# print(head(df1))
 
 for (gene in colnames(df1)){
     print(gene)
