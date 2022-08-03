@@ -29,6 +29,10 @@ for (i in 1:nrow(sign_results)){
     genename = sign_results$gene[i]
     snp = sign_results$snp_id[i]
     rsid = df_hrc[grep(snp,df_hrc$snpid),]$ID
+    # check if file already exists
+    fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/pseudo_gene_by_genotype/"
+    filename = paste0(fig_dir,genename,"-",rsid,".png")
+    if (file.exists(filename)){next}
     # Get the snpid
     eSNP_df <- as.data.frame(df_hrc) %>% filter(ID==rsid)
     eSNP <- eSNP_df$snpid
@@ -54,9 +58,8 @@ for (i in 1:nrow(sign_results)){
     A2 <- df_snps$'ALT(1)'
     pt_geno_expr$genotype <- factor(pt_geno_expr$genotype, labels=c(paste0(A1,A1), paste0(A1,A2), paste0(A2,A2)))
     ## save plot
-    fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/pseudo_gene_by_genotype/"
     # pdf(paste0(fig_dir,genename,"-",rsid,".pdf"), width=10, height=6)
-    png(paste0(fig_dir,genename,"-",rsid,".png"), width=10, height=6)
+    png(filename, width=10, height=6)
     myplot <- ggplot(pt_geno_expr, aes(x=pseudotime, y=gene, colour=as.factor(genotype))) + geom_point() + 
         stat_smooth(se=F, linetype = 2, aes(group=as.factor(genotype), colour=as.factor(genotype))) + 
         scale_color_canva(palette = "Art history inspired") + theme_classic() +
