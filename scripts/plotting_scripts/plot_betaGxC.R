@@ -7,6 +7,7 @@ sceb = readRDS(sceb_filename)
 
 phate_df = as.data.frame(Embeddings(sceb, reduction = "phate"))
 df_to_plot = phate_df
+print(head(df_to_plot))
 
 summary_betaGxC_file = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_noplasma_Bcell_eQTLs/betas/summary_betaGxC.csv"
 df1 = read.csv(summary_betaGxC_file, row.names=1)
