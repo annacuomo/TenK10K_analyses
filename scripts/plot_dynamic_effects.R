@@ -2,6 +2,7 @@ library(data.table)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+library(Seurat)
 
 # example SNP - gene pair
 rsid <- "rs2848626" # 11:57283988
