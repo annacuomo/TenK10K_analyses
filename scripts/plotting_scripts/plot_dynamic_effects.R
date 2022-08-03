@@ -35,7 +35,7 @@ for (i in 1:nrow(sign_results)){
     if (file.exists(filename)){next}
     # Get the snpid
     eSNP_df <- as.data.frame(df_hrc) %>% filter(ID==rsid)
-    eSNP <- eSNP_df$snpid
+    eSNP <- eSNP_df$snpid[1]
     chrNumber <- gsub(":.*","", eSNP)
     # Prepare genotype file
     genotype_dir <- '/share/ScratchGeneral/anncuo/OneK1K/Seyhan_scripts/Genotype_Files'
