@@ -15,12 +15,12 @@ for (gene in colnames(df1)){
     if (gene == "barcode"){next}
     # check if file already exists
     fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/phate_by_betaGxC/"
-    filename = paste0(fig_dir,gene,".png")
+    filename = paste0(fig_dir,gene,".pdf")
     if (file.exists(filename)){next}
     df2 = inner_join(df_to_plot, as.data.frame(df1[,c("barcode",gene)]), by="barcode")
     colnames(df2)[ncol(df2)] = "beta"
     ## save plot
-    png(filename, width=8, height=6)
+    pdf(filename, width=8, height=6)
     myplot <- ggplot(df2, aes(x = PHATE_2, y = PHATE_1, colour = beta)) + geom_point(alpha=0.2) + 
         theme_classic() + scale_colour_gradientn(colors = brewer.pal(9,"Spectral")) + ggtitle(gene))
     print(myplot)

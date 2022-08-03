@@ -11,12 +11,12 @@ df1$barcode = rownames(df1)
 for (gene in colnames(df1)){
     # check if file already exists
     fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/pseudotime_vs_betaGxC/"
-    filename = paste0(fig_dir,gene,".png")
+    filename = paste0(fig_dir,gene,".pdf")
     if (file.exists(filename)){next}
     df2 = inner_join(pt, as.data.frame(df1[,c("barcode",gene)]), by="barcode")
     colnames(df2)[ncol(df2)] = "betaGxC"
     ## save plot
-    png(filename, width=8, height=6)
+    pdf(filename, width=8, height=6)
     myplot <- ggplot(df2, aes(x = pseudotime, y = betaGxC)) + geom_point(alpha=0.2) + theme_classic() +
         ggtitle(gene)+ stat_smooth(se = F, linetype=2, col="darkgrey")
     print(myplot)
