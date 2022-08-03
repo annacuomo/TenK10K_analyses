@@ -12,6 +12,7 @@ summary_betaGxC_file = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcel
 df1 = read.csv(summary_betaGxC_file, row.names=1)
 
 for (gene in colnames(df1)){
+    print(gene)
     if (gene == "barcode"){next}
     # check if file already exists
     fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/phate_by_betaGxC/"
