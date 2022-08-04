@@ -12,12 +12,14 @@ args = commandArgs(trailingOnly=TRUE)
 
 pc_number <- args[1]
 pc = paste0("PC_",pc_number)
+print(paste0("Running for PC",pc))
 
 ## start by loading files that can be opened just once
 # chage this to be PCs (context file?)
 PCs_filename = "/share/ScratchGeneral/anncuo/OneK1K/CellRegMap_input_files/all_B_cells/PCs_Bcells.csv"
 PCs_df = read.csv(PCs_filename)
 colnames(PCs_df)[1] = "barcode"
+print(paste0("Number of cells:", ncol(PCs_df)-1))
 
 # match cells to individuals
 smf_filename = "/share/ScratchGeneral/anncuo/OneK1K/CellRegMap_input_files/all_B_cells/smf_Bcells.csv"
@@ -29,14 +31,17 @@ PCs_donor = left_join(PCs_df[,1:11], smf[,c("barcode","individual")], by="barcod
 filename = "/share/ScratchGeneral/anncuo/OneK1K/Seyhan_scripts/hrc_ids_all.rds"
 df_hrc <- readRDS(filename)
 
+print("Load Seurat object")
 expr_filename = "/share/ScratchGeneral/anncuo/OneK1K/Bcells_sce.rds"
 expr_sce = readRDS(expr_filename)
 
+print("Load CellRegMap results")
 # get significant SNP-gene pairs instead
 all_results = read.csv("/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/summary.csv", row.names=1)
 all_results$qv = qvalue(all_results$pv_raw)$qvalues
 sign_results = all_results[all_results$qv<0.05,]
 
+print("Start plotting loop")
 for (i in 1:nrow(sign_results)){
     print(c(i,round(i/nrow(sign_results)*100, digits=2)))
     genename = sign_results$gene[i]
