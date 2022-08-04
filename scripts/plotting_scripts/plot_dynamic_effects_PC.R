@@ -43,7 +43,7 @@ for (i in 1:nrow(sign_results)){
     snp = sign_results$snp_id[i]
     rsid = df_hrc[grep(snp,df_hrc$snpid),]$ID[1]
     # check if file already exists
-    fig_dir = "/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/PC1_gene_by_genotype/"
+    fig_dir = paste0("/share/ScratchGeneral/anncuo/OneK1K/CRM_interaction/Bcells_Bcell_eQTLs/Figures/PC",pc,"_gene_by_genotype/")
     filename = paste0(fig_dir,genename,"-",rsid,".pdf")
     if (file.exists(filename)){next}
     # Get the snpid
