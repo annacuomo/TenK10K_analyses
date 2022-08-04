@@ -8,6 +8,10 @@ library(qvalue)
 # # example SNP - gene pair
 # rsid <- "rs2848626" # 11:57283988
 # genename <- "SELL"
+args = commandArgs(trailingOnly=TRUE)
+
+pc_number <- args[1]
+pc = paste0("PC_",pc_number)
 
 ## start by loading files that can be opened just once
 # chage this to be PCs (context file?)
@@ -69,7 +73,7 @@ for (i in 1:nrow(sign_results)){
     else {pc_geno_expr$genotype <- factor(pc_geno_expr$genotype, labels=c(paste0(A1,A1), paste0(A1,A2), paste0(A2,A2)))}
     ## save plot
     pdf(filename, width=10, height=6)
-    myplot <- ggplot(pc_geno_expr, aes(x=PC_1, y=gene, colour=as.factor(genotype))) + geom_point() + 
+    myplot <- ggplot(pc_geno_expr, aes(x=pc, y=gene, colour=as.factor(genotype))) + geom_point() + 
         stat_smooth(se=F, linetype = 2, aes(group=as.factor(genotype), colour=as.factor(genotype))) + 
         scale_color_canva(palette = "Art history inspired") + theme_classic() +
         theme(text = element_text(size=20)) + ylab(genename) + labs(colour=rsid)
