@@ -12,7 +12,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 pc_number <- args[1]
 pc = paste0("PC_",pc_number)
-print(paste0("Running for PC",pc))
+print(paste0("Running for PC",pc_number))
 
 ## start by loading files that can be opened just once
 # chage this to be PCs (context file?)
