@@ -80,7 +80,7 @@ for (i in 1:nrow(sign_results)){
     print(head(pc_geno_expr))
     ## save plot
     pdf(filename, width=10, height=6)
-    myplot <- ggplot(pc_geno_expr, aes(x=pc_geno_expr[,(pc_number+5)], y=gene, colour=as.factor(genotype))) + geom_point() + 
+    myplot <- ggplot(pc_geno_expr, aes(x=pc_geno_expr[,(as.numeric(pc_number)+5)], y=gene, colour=as.factor(genotype))) + geom_point() + 
         stat_smooth(se=F, linetype = 2, aes(group=as.factor(genotype), colour=as.factor(genotype))) + 
         scale_color_canva(palette = "Art history inspired") + theme_classic() +
         theme(text = element_text(size=20)) + ylab(genename) + labs(colour=rsid)
