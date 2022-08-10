@@ -45,6 +45,7 @@ print("Start plotting loop")
 for (i in 1:nrow(sign_results)){
     print(c(i,round(i/nrow(sign_results)*100, digits=2)))
     genename = sign_results$gene[i]
+    print(paste0("Running for: ", genename))
     snp = sign_results$snp_id[i]
     rsid = df_hrc[grep(snp,df_hrc$snpid),]$ID[1]
     # check if file already exists
