@@ -19,7 +19,7 @@ print(paste0("Running for PC",pc_number))
 PCs_filename = "/share/ScratchGeneral/anncuo/OneK1K/CellRegMap_input_files/all_B_cells/PCs_Bcells.csv"
 PCs_df = read.csv(PCs_filename)
 colnames(PCs_df)[1] = "barcode"
-print(paste0("Number of cells:", ncol(PCs_df)-1))
+print(paste0("Number of cells:", nrpw(PCs_df)))
 
 # match cells to individuals
 smf_filename = "/share/ScratchGeneral/anncuo/OneK1K/CellRegMap_input_files/all_B_cells/smf_Bcells.csv"
