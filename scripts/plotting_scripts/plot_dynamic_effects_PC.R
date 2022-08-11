@@ -28,8 +28,8 @@ smf$barcode = smf$phenotype_sample_id
 smf$individual = smf$individual_long
 PCs_donor = left_join(PCs_df[,1:11], smf[,c("barcode","individual")], by="barcode")
 
-filename = "/share/ScratchGeneral/anncuo/OneK1K/Seyhan_scripts/hrc_ids_all.rds"
-df_hrc <- readRDS(filename)
+filename_hrc = "/share/ScratchGeneral/anncuo/OneK1K/Seyhan_scripts/hrc_ids_all.rds"
+df_hrc <- readRDS(filename_hrc)
 
 print("Load Seurat object")
 expr_filename = "/share/ScratchGeneral/anncuo/OneK1K/Bcells_sce.rds"
