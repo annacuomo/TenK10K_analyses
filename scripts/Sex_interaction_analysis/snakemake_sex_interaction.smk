@@ -44,7 +44,7 @@ def extendChunk(chunk):
 #Variables
 chunkFile = '/ChunkFiles/'
 genotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/plink_files/plink_chr1'
-annotationFile = '//Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
+annotationFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/LCL.featureCounts.features.tsv'
 phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes_chr1.tsv'
 covariateFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/covariates.tsv'
 kinshipFiles = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/grm_wide.csv'
