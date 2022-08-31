@@ -45,11 +45,13 @@ def extendChunk(chunk):
 chunkFile = '/ChunkFiles/'
 genotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/plink_files/plink_chr1'
 annotationFile = '//Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
-phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes.tsv'
+phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes_chr1.tsv'
 covariateFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/covariates.tsv'
 kinshipFiles = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/grm_wide.csv'
 noiseTermFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/noise_matrix.tsv'
+sampleMappingFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/smf.tsv'
 featureVariantFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/fvf.tsv'
+interactionTerm = 'sex'
 numberOfPermutations = '1000'
 minorAlleleFrequency = '0.05'
 hwe = '0.000001'
@@ -87,13 +89,14 @@ rule run_qtl_mapping:
         cf = covariateFile,
         kf = kinshipFiles,
         rf = noiseTermFile,
-   #     smf = sampleMappingFile,
+        smf = sampleMappingFile,
         fvf = featureVariantFile
     output:
         '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/{chunk}.finished'
     params:
         gen = genotypeFile,
         od = outputFolder,
+        it = interactionTerm,
         np = numberOfPermutations,
         maf = minorAlleleFrequency,
         hwe = hwe,
@@ -109,10 +112,11 @@ rule run_qtl_mapping:
             " -pf {input.pf} "
             " -cf {input.cf} "
             " -od {params.od} "
-           # " -smf {input.smf} "
+            " -smf {input.smf} "
             " -fvf {input.fvf} "
             " -rf {input.kf},{input.rf} "
             " -gr {chunkFull} "
+            " -i {params.it} "
             " -np {params.np} "
             " -maf {params.maf} "
             " -hwe {params.hwe} "
