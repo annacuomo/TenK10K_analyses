@@ -43,25 +43,23 @@ def extendChunk(chunk):
 
 #Variables
 chunkFile = '//ChunkFiles/chr.txt'
-genotypeFile = '/hps/nobackup2/stegle/users/acuomo/hipsci_genotype_files/hipsci.wec.gtarray.HumanCoreExome.imputed_phased.20170327.genotypes.norm.renamed'
+genotypeFile = '/'
 annotationFile = '//Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
-phenotypeFile = '/phenotypes.tsv'
-covariateFile = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/covariates.tsv'
-#kinshipFiles = '/hps/nobackup/hipsci/scratch/genotypes/imputed/REL-2018-01/Full_Filtered_Plink-f/hipsci.wec.gtarray.HumanCoreExome.imputed_phased.20170327.genotypes.norm.renamed.recode.filtered.rel'
-kinshipFiles = '/hps/nobackup2/stegle/users/acuomo/hipsci_genotype_files/hipsci.wec.gtarray.HumanCoreExome.imputed_phased.20170327.genotypes.norm.renamed.kinship'
-noiseTermFile = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/noise_matrix.tsv'
-#sampleMappingFile = input_files_dir+'smf.tsv'
-featureVariantFile = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/fvf.tsv'
+phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes.tsv'
+covariateFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/covariates.tsv'
+kinshipFiles = ''
+noiseTermFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/noise_matrix.tsv'
+featureVariantFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/fvf.tsv'
 numberOfPermutations = '1000'
 minorAlleleFrequency = '0.05'
 hwe = '0.000001'
 callRate = '1'
 windowSize = '250000'
 blockSize = '15000'
-outputFolder = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/results/'
+outputFolder = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/'
 
-finalQtlRun = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/results/top_qtl_results_all.txt'
-finalQtlRun1 = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/results/qtl_results_all.txt'
+finalQtlRun = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/top_qtl_results_all.txt'
+finalQtlRun1 = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/qtl_results_all.txt'
 
 with open(chunkFile,'r') as f:
     chunks = [x.strip() for x in f.readlines()]
@@ -92,7 +90,7 @@ rule run_qtl_mapping:
    #     smf = sampleMappingFile,
         fvf = featureVariantFile
     output:
-        '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/results/{chunk}.finished'
+        '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/{chunk}.finished'
     params:
         gen = genotypeFile,
         od = outputFolder,
@@ -105,7 +103,7 @@ rule run_qtl_mapping:
     run:
         chunkFull = extendChunk({wildcards.chunk})
         shell(
-            "singularity exec /hps/nobackup2/stegle/users/acuomo/containers/limix206_qtl.simg python /hps/nobackup2/stegle/users/acuomo/tools/hipsci_pipeline/limix_QTL_pipeline/run_QTL_analysis.py "
+            "singularity exec /hps/nobackup2/stegle/users/acuomo/containers/limix206_qtl.simg python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/run_interaction_QTL_analysis.py "
             "--plink {params.gen} "
             " -af {input.af} "
             " -pf {input.pf} "
