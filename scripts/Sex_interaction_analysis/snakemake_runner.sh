@@ -1,10 +1,11 @@
 SNAKEFILE="/snakemake_sex_interaction.smk"
+# CONFIG=""
 LOG="/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs/"
 
 nohup \
   snakemake \
-    --snakefile $IMPUTATION_SNAKEFILE \
-    --configfile $IMPUTATION_CONFIG \
+    --snakefile $SNAKEFILE \
+    # --configfile $CONFIG \
     --rerun-incomplete \
     --jobs 20 \
     # --use-singularity \
