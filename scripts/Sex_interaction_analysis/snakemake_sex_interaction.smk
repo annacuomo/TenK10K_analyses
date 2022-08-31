@@ -7,7 +7,7 @@ at first, eQTLs only (identified in any Monocyte sub cell type, OneK1K original 
 Author: Anna Cuomo
 Affiliation: EMBL-EBI, Wellcome Sanger Institute, Garvan Institute
 Date: Wednesday 31st August 2022
-#Run: snakemake --snakefile ./snakemake.py --jobs 400 --latency-wait 30 --cluster-config /cluster.json --cluster 'bsub -q {cluster.queue} -n {cluster.n} -R "rusage[mem={cluster.memory}]" -M {cluster.memory} -o ./DA.o -e ./DA.e' --keep-going --rerun-incomplete
+#Run: snakemake --snakefile ./snakemake_sex_interaction.smk --jobs 400 --latency-wait 30 --cluster-config /cluster.json --cluster 'bsub -q {cluster.queue} -n {cluster.n} -R "rusage[mem={cluster.memory}]" -M {cluster.memory} -o ./DA.o -e ./DA.e' --keep-going --rerun-incomplete
 """
 
 import glob
@@ -42,12 +42,10 @@ def extendChunk(chunk):
 
 
 #Variables
-chunkFile = '/nfs/leia/research/stegle/mjbonder/ChunkFiles/chr.txt'
+chunkFile = '//ChunkFiles/chr.txt'
 genotypeFile = '/hps/nobackup2/stegle/users/acuomo/hipsci_genotype_files/hipsci.wec.gtarray.HumanCoreExome.imputed_phased.20170327.genotypes.norm.renamed'
-#genotypeFile = '/hps/nobackup/hipsci/scratch/genotypes/imputed/2017-03-27/Full_Filtered_SNPs_Plink/hipsci.wec.gtarray.HumanCoreExome.imputed_phased.20170327.genotypes.norm.renamed'
-#annotationFile = '/hps/nobackup/hipsci/scratch/singlecell_endodiff/data_processed/scQTLs/annos/ensembl_gene_id_annos.tsv'
-annotationFile = '/nfs/leia/research/stegle/dseaton/hipsci/singlecell_neuroseq/data/metadata/gene_annotation/Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
-phenotypeFile = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/phenotypes.tsv'
+annotationFile = '//Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
+phenotypeFile = '/phenotypes.tsv'
 covariateFile = '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/covariates.tsv'
 #kinshipFiles = '/hps/nobackup/hipsci/scratch/genotypes/imputed/REL-2018-01/Full_Filtered_Plink-f/hipsci.wec.gtarray.HumanCoreExome.imputed_phased.20170327.genotypes.norm.renamed.recode.filtered.rel'
 kinshipFiles = '/hps/nobackup2/stegle/users/acuomo/hipsci_genotype_files/hipsci.wec.gtarray.HumanCoreExome.imputed_phased.20170327.genotypes.norm.renamed.kinship'
