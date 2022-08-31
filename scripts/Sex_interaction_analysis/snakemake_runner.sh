@@ -1,11 +1,11 @@
 SNAKEFILE="/snakemake_sex_interaction.smk"
-# CONFIG="/cluster.json"
+CONFIG="/cluster.json"
 LOG="/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs/"
 
 nohup \
   snakemake \
     --snakefile $SNAKEFILE \
-    # --configfile $CONFIG \
+    --configfile $CONFIG \
     --rerun-incomplete \
     --jobs 20 \
     # --use-singularity \
