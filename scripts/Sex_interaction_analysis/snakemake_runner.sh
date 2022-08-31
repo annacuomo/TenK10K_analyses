@@ -16,7 +16,7 @@ nohup \
         -q short.q \
         -r yes \
         -pe smp {threads} \
-        # -l tmp_requested={resources.disk_per_thread_gb}G \
+        -l tmp_requested={cluster.memory} \
         -l mem_requested={cluster.memory} \
         -e $LOG \
         -o $LOG \
