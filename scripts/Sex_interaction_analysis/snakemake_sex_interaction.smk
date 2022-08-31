@@ -42,12 +42,12 @@ def extendChunk(chunk):
 
 
 #Variables
-chunkFile = '//ChunkFiles/chr.txt'
-genotypeFile = '/'
+chunkFile = '/ChunkFiles/'
+genotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/plink_files/plink_chr1'
 annotationFile = '//Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
 phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes.tsv'
 covariateFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/covariates.tsv'
-kinshipFiles = ''
+kinshipFiles = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/grm_wide.csv'
 noiseTermFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/noise_matrix.tsv'
 featureVariantFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/fvf.tsv'
 numberOfPermutations = '1000'
@@ -129,10 +129,10 @@ rule aggregate_qtl_results:
         OF = outputFolder,
         finalFiles = qtlOutput
     output:
-        '/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/results/top_qtl_results_all.txt'
+        '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/top_qtl_results_all.txt'
     run:
         shell(
-            "/nfs/software/stegle/users/acuomo/conda-envs/limix_qtl/bin/python /hps/nobackup2/stegle/users/mjbonder/tools2/hipsci_pipeline/post-processing_QTL/minimal_postprocess.py "
+            "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing_QTL/minimal_postprocess.py "
             "-id {input.IF} "
             " -od {input.OF} "
             " -sfo -tfb ")
@@ -143,10 +143,10 @@ rule aggregate_qtl_results_all:
         OF = outputFolder,
         finalFiles = qtlOutput
     output:
-        "/hps/nobackup2/stegle/users/acuomo/all_scripts/struct_LMM2/sc_neuroseq/May2021/genetic_effect/MOFA10/flip_signs/input_files_ABHD12B-14_51328222_C_T_top20quantile/results/qtl_results_all.txt"
+        "/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/qtl_results_all.txt"
     run:
         shell(
-            "/nfs/software/stegle/users/acuomo/conda-envs/limix_qtl/bin/python /hps/nobackup2/stegle/users/mjbonder/tools2/hipsci_pipeline/post-processing_QTL/minimal_postprocess.py "
+            "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing_QTL/minimal_postprocess.py "
             "-id {input.IF} "
             " -od {input.OF} "
             " -sfo -mrp 1 ")
