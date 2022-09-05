@@ -42,7 +42,7 @@ def extendChunk(chunk):
 
 
 #Variables
-chunkFile = '/ChunkFiles/'
+chunkFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/chunks.txt'
 genotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/plink_files/plink_chr1'
 annotationFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
 phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes_chr1.tsv'
