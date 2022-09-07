@@ -2,6 +2,7 @@
 scripts/run_assoc.sh
 scripts/run_inter.sh
 **/.RData*
+**/.panfs*
 
 # Folders
 scripts/stderr_run_crm*
