@@ -44,11 +44,7 @@ def extendChunk(chunk):
 #Variables
 chunkFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/chunks.txt'
 genotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/plink_files/plink_chr1'
-<<<<<<< HEAD
 annotationFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/LCL.featureCounts.features.tsv'
-=======
-annotationFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Homo_sapiens.GRCh37.82.Limix_annotation_gene_level.txt'
->>>>>>> 5c33e220f29bf5241812ec1b98660e86645536e3
 phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes_chr1.tsv'
 covariateFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/covariates.tsv'
 kinshipFiles = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/grm_wide.csv'
@@ -110,7 +106,7 @@ rule run_qtl_mapping:
     run:
         chunkFull = extendChunk({wildcards.chunk})
         shell(
-            "singularity exec /hps/nobackup2/stegle/users/acuomo/containers/limix206_qtl.simg python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/run_interaction_QTL_analysis.py "
+            "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/run_interaction_QTL_analysis.py "
             "--plink {params.gen} "
             " -af {input.af} "
             " -pf {input.pf} "
