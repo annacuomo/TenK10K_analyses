@@ -9,7 +9,7 @@ The full dataset will include:
 
 ### Phase 1
 
-Phase 1 includes the current OneK1K and BioHEART, for 2,500-3,000 total people.
+Phase 1 includes the current OneK1K and BioHEART, for >2,000 total people.
 For all individuals, matched whole-genome sequencing (WGS) data was collected also.
 
 ### Analyses: Rare variant association with single-cell expression
