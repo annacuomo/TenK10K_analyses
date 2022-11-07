@@ -39,6 +39,11 @@ full_df$attribute <- c()
 # Add columns Ensembl Gene ID (no version)
 full_df$ensembl_gene_id <- gsub("\\..*", "", full_df$gene_id)
 
+# Clean attribute columns
+full_df$tag <- gsub(";", "", full_df$tag)
+full_df$level <- gsub(";", "", full_df$level)
+full_df$havana_gene <- gsub(";", "", full_df$havana_gene)
+
 # Save formatted object
 csv_filename <- gsub(".gtf", ".genesonly.csv", gtf_file)
 write.csv(full_df, csv_filename)
