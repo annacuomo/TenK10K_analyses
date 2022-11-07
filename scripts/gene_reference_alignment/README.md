@@ -31,7 +31,7 @@ The 5' region of IGLL5 is unique so for 5' you probably will get correct countin
 
 The idea then would be to 
 * download release 42
-* compare the two lists of genes and
+* compare lists of genes in release 42 to genes in release 38, and
 * compile a white list and a black list from that before re-building the reference we use. 
 
 I downloaded the [Gencode release 42](https://www.gencodegenes.org/human/) - this is reference GRCh38 (specifically GRCh38.p13).
