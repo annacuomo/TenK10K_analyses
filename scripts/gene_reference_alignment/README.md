@@ -30,14 +30,19 @@ The 5' region of IGLL5 is unique so for 5' you probably will get correct countin
 ## The plan
 
 The idea then would be to 
-* download release 42
-* compare lists of genes in release 42 to genes in release 38, and
+* download release 42 and release 38 from [here](https://www.gencodegenes.org/human/releases.html) (basic annotation, CHR) 
+* compare the two lists of genes
 * compile a white list and a black list from that before re-building the reference we use. 
 
-I downloaded the [Gencode release 42](https://www.gencodegenes.org/human/) - this is reference GRCh38 (specifically GRCh38.p13).
-Compare comprehensive and basic annotations?
+Both are reference GRCh38 (specifically GRCh38.p13).
+
+###[Gencode release 42](https://www.gencodegenes.org/human/) (Ensembl 108)
 * Comprehensive annotation total number of genes: 69,215
 * Basic annotation total number of genes: 62,696
+* 
+###[Gencode release 38](https://www.gencodegenes.org/human/release_38.html) (Ensembl 104)
+* Comprehensive annotation total number of genes: 67,049
+* Basic annotation total number of genes: 60,649 
 
 Reference building 10X Genomics guidelines: https://support.10xgenomics.com/single-cell-gene-expression/software/release-notes/build#GRCh38_2020A
 
