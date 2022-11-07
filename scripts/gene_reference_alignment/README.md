@@ -43,5 +43,6 @@ Reference building 10X Genomics guidelines: https://support.10xgenomics.com/sing
 ## More
 
 * Slack
+  * [Chat with Seyhan, Himanshi, Drew, Michael](https://centrepopgen.slack.com/archives/C0452C9A03E/p1664861186564689)
 * Slides
   * [Oct 14th 2022](https://docs.google.com/presentation/d/1OKu9etJYL56CY7iG7kBnkspWNJbdwclfKKaws40ZbyA/edit#slide=id.g1641cc8c996_0_0)
