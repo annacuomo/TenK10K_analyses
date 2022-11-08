@@ -67,9 +67,7 @@ for (i in seq_len(nrow(gtf_t_df))){
     df_curr <- as.data.frame(mat)
     colnames(df_curr) <- mat[1, ]
     n <- length(colnames(df_curr)[grep("tag", colnames(df_curr))]) # split tags
-    if (n > 1) {
-        colnames(df_curr)[grep("tag", colnames(df_curr))] <- paste0("tag", 1:n)
-        }
+    colnames(df_curr)[grep("tag", colnames(df_curr))] <- paste0("tag", 1:n)
     df_curr <- df_curr[-1, ]
     attributes_df <- rbind.fill(attributes_df, df_curr)
 }
