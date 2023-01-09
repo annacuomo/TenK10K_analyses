@@ -4,11 +4,13 @@ Focusing on Monocytes from the [OneK1K](https://onek1k.org/) data, testing for i
 
 Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper around [LIMIX](https://github.com/limix/glimix-core), specifically the [interaction runner](https://github.com/single-cell-genetics/limix_qtl/blob/master/Limix_QTL/run_interaction_QTL_analysis.py).
 
-[This script](snakemake_sex_interaction.smk) is the actual snakemake, [this one](snakemake_runner.sh) runs it using PBS (Portable Batch System, qsub), the high performance computing (HPC) cluster at Garvan.
-
 ## Preprocessing
 
-* Make chunks from gene annotation file [script](makechunks.R)
+* Make chunks from gene annotation file [script](create_chunks.R)
+* Create other input files
 
 
 ## Snakemake to run interaction eQTL mapping 
+
+* [This script](snakemake_sex_interaction.smk) is the actual snakemake,
+* [this one](snakemake_runner.sh) runs it using PBS (Portable Batch System, qsub), the high performance computing (HPC) cluster at Garvan.
