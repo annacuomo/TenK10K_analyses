@@ -1,8 +1,8 @@
 ## Snakemake to run interaction eQTL mapping 
 
-### Analysis of sex-eQTLs in Monocytes
+### Analysis of sex-interacting eQTLs in Monocytes
 
-Focusing on Monocytes from the [OneK1K] data, testing for interactions between genotypes (at common loci) and sex on single-cell expression
+Focusing on Monocytes from the [OneK1K](https://onek1k.org/) data, testing for interactions between genotypes (at common loci, freq>5%) and chromosomal sex on single-cell gene expression.
 
 Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper around [LIMIX](https://github.com/limix/glimix-core), specifically the [interaction runner](https://github.com/single-cell-genetics/limix_qtl/blob/master/Limix_QTL/run_interaction_QTL_analysis.py).
 
