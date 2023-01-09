@@ -6,7 +6,7 @@ Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper a
 
 ## Preprocessing
 
-* Make chunks from gene annotation file [script](create_chunks.R)
+* Make chunks from gene annotation file [script](create_chunks.R) - note: this works as a script, not from a notebook.
 * Create other input files
 
 
