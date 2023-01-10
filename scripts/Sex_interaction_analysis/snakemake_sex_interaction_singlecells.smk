@@ -46,11 +46,10 @@ chunkFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/chunks.txt'
 genotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/plink_files/plink_chr1'
 annotationFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/LCL.featureCounts.features.tsv'
 phenotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/phenotypes_chr1.tsv'
-covariateFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/covariates.tsv'
 kinshipFiles = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/grm_wide.csv'
-noiseTermFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/noise_matrix.tsv'
-sampleMappingFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/smf.tsv'
-featureVariantFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/input_files/fvf.tsv'
+featureVariantFile = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/fvf_Monocyte_eqtls.csv'
+sampleMappingFile = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/smf_monocytes.csv'
+covariateFile = '/share/ScratchGeneral/anncuo/OneK1K/input_files_CellRegMap/PCs_sex_monocytes.csv'
 interactionTerm = 'sex'
 numberOfPermutations = '1000'
 minorAlleleFrequency = '0.05'
@@ -58,10 +57,10 @@ hwe = '0.000001'
 callRate = '1'
 windowSize = '250000'
 blockSize = '15000'
-outputFolder = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/'
+outputFolder = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/'
 
-finalQtlRun = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/top_qtl_results_all.txt'
-finalQtlRun1 = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/qtl_results_all.txt'
+finalQtlRun = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/top_qtl_results_all.txt'
+finalQtlRun1 = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/qtl_results_all.txt'
 
 with open(chunkFile,'r') as f:
     chunks = [x.strip() for x in f.readlines()]
@@ -88,11 +87,10 @@ rule run_qtl_mapping:
         pf = phenotypeFile,
         cf = covariateFile,
         kf = kinshipFiles,
-        rf = noiseTermFile,
         smf = sampleMappingFile,
         fvf = featureVariantFile
     output:
-        '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/{chunk}.finished'
+        '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/{chunk}.finished'
     params:
         gen = genotypeFile,
         od = outputFolder,
@@ -114,7 +112,7 @@ rule run_qtl_mapping:
             " -od {params.od} "
             " -smf {input.smf} "
             " -fvf {input.fvf} "
-            " -rf {input.kf},{input.rf} "
+            " -rf {input.kf} "
             " -gr {chunkFull} "
             " -i {params.it} "
             " -np {params.np} "
@@ -133,7 +131,7 @@ rule aggregate_qtl_results:
         OF = outputFolder,
         finalFiles = qtlOutput
     output:
-        '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/top_qtl_results_all.txt'
+        '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/top_qtl_results_all.txt'
     run:
         shell(
             "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing_QTL/minimal_postprocess.py "
@@ -147,7 +145,7 @@ rule aggregate_qtl_results_all:
         OF = outputFolder,
         finalFiles = qtlOutput
     output:
-        "/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results/qtl_results_all.txt"
+        "/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/qtl_results_all.txt"
     run:
         shell(
             "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing_QTL/minimal_postprocess.py "
