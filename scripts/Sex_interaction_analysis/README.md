@@ -27,4 +27,4 @@ Follow instructions from [here](https://github.com/single-cell-genetics/limix_qt
 
 ## References
 
-[1] Yazar*, Alquicira-Hernandez*, Wing* _et al_., Single-cell eQTL mapping identifies cell type–specific genetic control of autoimmune disease Science, 2022.
+[1] Yazar*, Alquicira-Hernandez*, Wing* _et al_., [Single-cell eQTL mapping identifies cell type–specific genetic control of autoimmune disease.](https://www.science.org/doi/10.1126/science.abf3041) Science, 2022.
