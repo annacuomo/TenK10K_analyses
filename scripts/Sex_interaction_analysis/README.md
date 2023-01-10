@@ -8,6 +8,11 @@ Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper a
 
 * Make chunks from gene annotation file [script](create_chunks.R) - note: this works as a script, not from a notebook.
 * Take other input files from CellRegMap run
+  * genotypes (plink format, one per chromosome, MAF>5%)
+  * kinship (GRM, wide format)
+  * covariates (PCs 1:20, sex)
+  * sample mapping file (linking cells to individuals)
+  * feature variant filter (only SNP-gene pairs found to be eQTL in monocytes [1])
 * make phenotype file running [this script](make_phenotype.py) - note: one per chromosome
 
 ## Limix QTL wrapper installation
@@ -18,3 +23,8 @@ Follow instructions from [here](https://github.com/single-cell-genetics/limix_qt
 
 * [This script](snakemake_sex_interaction_singlecells.smk) is the actual snakemake,
 * [this one](snakemake_runner.sh) runs it using PBS (Portable Batch System, qsub), the high performance computing (HPC) cluster at Garvan.
+
+
+## References
+
+[1] Yazar et al Science 2022
