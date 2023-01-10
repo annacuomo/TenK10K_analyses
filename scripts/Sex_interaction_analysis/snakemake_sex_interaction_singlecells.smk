@@ -1,13 +1,13 @@
 """
-Snakefile for monocytes (OneK1K v1) across subtypes (CD14, CD16)
+Snakefile for monocytes (OneK1K v1) across subtypes (CD14, CD16) - single-cell version
 at first, eQTLs only (identified in any Monocyte sub cell type, OneK1K original paper)
 15 expression PCs as covariates (fixed effects)
-1/n to account for different numbers of cells per donor increasing the variance AND kinship to account for multiple cells from the same individual
+(expanded) kinship to account for multiple cells from the same individual
 
 Author: Anna Cuomo
 Affiliation: Garvan Institute (formerly EMBL-EBI and Wellcome Sanger Institute)
 Date: Tuesday 10th January 2023
-#Run: snakemake --snakefile ./snakemake_sex_interaction.smk --jobs 400 --latency-wait 30 --cluster-config /cluster.json --cluster 'bsub -q {cluster.queue} -n {cluster.n} -R "rusage[mem={cluster.memory}]" -M {cluster.memory} -o ./DA.o -e ./DA.e' --keep-going --rerun-incomplete
+#Run: snakemake --snakefile ./snakemake_sex_interaction_singlecells.smk --jobs 400 --latency-wait 30 --cluster-config /cluster.json --cluster 'bsub -q {cluster.queue} -n {cluster.n} -R "rusage[mem={cluster.memory}]" -M {cluster.memory} -o ./DA.o -e ./DA.e' --keep-going --rerun-incomplete
 """
 
 import glob
