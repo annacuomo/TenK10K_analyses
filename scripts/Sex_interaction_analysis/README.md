@@ -9,6 +9,9 @@ Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper a
 * Make chunks from gene annotation file [script](create_chunks.R) - note: this works as a script, not from a notebook.
 * Create other input files
 
+## Limix QTL wrapper installation
+
+Follow instructions from [here](https://github.com/single-cell-genetics/limix_qtl/wiki/Installation#installation-using-conda)
 
 ## Snakemake to run interaction eQTL mapping (single cell version)
 
