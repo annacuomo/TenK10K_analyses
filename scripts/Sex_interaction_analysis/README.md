@@ -8,7 +8,7 @@ Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper a
 
 * Make chunks from gene annotation file [script](create_chunks.R) - note: this works as a script, not from a notebook.
 * Take other input files from CellRegMap run
-* make phenotype file
+* make phenotype file running [this script](make_phenotype.py) - note: one per chromosome
 
 ## Limix QTL wrapper installation
 
