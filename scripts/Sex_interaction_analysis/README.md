@@ -11,7 +11,7 @@ Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper a
 
 ## Limix QTL wrapper installation
 
-Follow instructions from [here](https://github.com/single-cell-genetics/limix_qtl/wiki/Installation#installation-using-conda)
+Follow instructions from [here](https://github.com/single-cell-genetics/limix_qtl/wiki/Installation#installation-using-conda) to install using conda
 
 ## Snakemake to run interaction eQTL mapping (single cell version)
 
