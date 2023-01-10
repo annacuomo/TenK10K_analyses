@@ -12,5 +12,5 @@ Using [Limix_QTL](https://github.com/single-cell-genetics/limix_qtl) a wrapper a
 
 ## Snakemake to run interaction eQTL mapping (single cell version)
 
-* [This script](snakemake_sex_interaction.smk) is the actual snakemake,
+* [This script](snakemake_sex_interaction_singlecells.smk) is the actual snakemake,
 * [this one](snakemake_runner.sh) runs it using PBS (Portable Batch System, qsub), the high performance computing (HPC) cluster at Garvan.
