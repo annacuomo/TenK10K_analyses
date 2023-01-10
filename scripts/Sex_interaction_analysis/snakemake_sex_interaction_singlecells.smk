@@ -41,7 +41,7 @@ def extendChunk(chunk):
     return chunkSplitted[0]+":"+chunkSplitted[1]+"-"+chunkSplitted[2]
 
 
-#Variables
+# Variables
 chunkFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/chunks.txt'
 genotypeFile = '/share/ScratchGeneral/anncuo/OneK1K/plink_files/plink_chr1'
 annotationFile = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/LCL.featureCounts.features.tsv'
@@ -67,15 +67,12 @@ with open(chunkFile,'r') as f:
 
 qtlOutput = []
 for chunk in chunks:
-    #print(chunk)
     processedChunk = flatenChunk(chunk)
-    #print(processedChunk)
     processedChunk=expand(outputFolder+'{chunk}.finished',chunk=processedChunk )
     qtlOutput.append(processedChunk)
 
 ## flatten these lists
 qtlOutput = [filename for elem in qtlOutput for filename in elem]
-#finalQtlRun = [filename for elem in finalQtlRun for filename in elem]
 
 rule all:
     input:
