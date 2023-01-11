@@ -1,6 +1,6 @@
 SNAKEFILE="/snakemake_sex_interaction_singlecells.smk"
 CONFIG="/cluster.json"
-LOG="/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs/"
+LOG="/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs"
 
 nohup \
   snakemake \
