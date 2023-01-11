@@ -14,9 +14,9 @@ nohup \
         "qsub -S /bin/bash \
         -q short.q \
         -r yes \
-        -pe smp {cluster.threads} \
-        -l tmp_requested={cluster.tmp_memory} \
-        -l mem_requested={cluster.memory} \
+        -pe smp 20 \
+        -l tmp_requested=20 \
+        -l mem_requested=20 \
         -e $LOG \
         -o $LOG \
         -j y \
