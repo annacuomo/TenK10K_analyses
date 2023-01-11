@@ -3,6 +3,7 @@
     {
     "memory" : "25GB",
     "n" : 2,
-    "queue": "verylong"
+    "queue": "verylong",
+    "threads": "20"
     }
 }
