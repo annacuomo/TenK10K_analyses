@@ -25,4 +25,4 @@ mat_df = pd.DataFrame(
 )
 
 # save
-mat_df.to_csv(phenotypeFile)
+mat_df.to_csv(phenotypeFile,sep="\t")
