@@ -8,8 +8,7 @@ nohup \
     --configfile $CONFIG \
     --rerun-incomplete \
     --jobs 20 \
-    # --use-singularity \
-    # --restart-times 2 \
+    --restart-times 2 \
     --keep-going \
     --cluster \
         "qsub -S /bin/bash \
