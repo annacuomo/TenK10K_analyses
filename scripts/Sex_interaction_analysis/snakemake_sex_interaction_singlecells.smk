@@ -7,7 +7,7 @@ at first, eQTLs only (identified in any Monocyte sub cell type, OneK1K original 
 Author: Anna Cuomo
 Affiliation: Garvan Institute (formerly EMBL-EBI and Wellcome Sanger Institute)
 Date: Tuesday 10th January 2023
-#Run: snakemake --snakefile ./snakemake_sex_interaction_singlecells.smk --jobs 400 --latency-wait 30 --cluster-config /cluster.json --cluster 'bsub -q {cluster.queue} -n {cluster.n} -R "rusage[mem={cluster.memory}]" -M {cluster.memory} -o ./DA.o -e ./DA.e' --keep-going --rerun-incomplete
+#Run: snakemake --snakefile ./snakemake_sex_interaction_singlecells.smk --cluster "qsub -S /bin/bash -q short.q -r yes -pe smp 20 -l tmp_requested=20 -l mem_requested=20 -e /share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs/ -o /share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs/" --keep-going --rerun-incomplete --jobs 20
 """
 
 import glob
