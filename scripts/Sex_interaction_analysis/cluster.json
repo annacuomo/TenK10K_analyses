@@ -4,6 +4,6 @@
     "memory" : "25GB",
     "n" : 2,
     "queue": "verylong",
-    "threads": "20"
+    "cluster.threads": "20"
     }
 }
