@@ -37,3 +37,8 @@ for(chr in unique(gene_anno$chromosome)){
   }
 }
 sink()
+
+
+df = read.csv("/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/chunks.txt",sep="\t",header=F)
+df$V1 = gsub("\\[1\\] ","",df$V1)
+write.table(df,"/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/chunks.txt",sep="\t",rownames=1)
