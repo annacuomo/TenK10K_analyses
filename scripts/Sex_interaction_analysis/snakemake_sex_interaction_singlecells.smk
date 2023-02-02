@@ -8,7 +8,6 @@ Author: Anna Cuomo
 Affiliation: Garvan Institute (formerly EMBL-EBI and Wellcome Sanger Institute)
 Date: Tuesday 10th January 2023
 # Run as: bash snakemake_runner.sh
-# Unlock as: snakemake --snakefile ./snakemake_sex_interaction_singlecells.smk --unlock
 """
 
 import glob
@@ -60,8 +59,13 @@ windowSize = '250000'
 blockSize = '15000'
 outputFolder = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/'
 
+print(outputFolder)
+
 finalQtlRun = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/top_qtl_results_all.txt'
 finalQtlRun1 = '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/qtl_results_all.txt'
+
+print(finalQtlRun)
+print(finalQtlRun1)
 
 with open(chunkFile,'r') as f:
     chunks = [x.strip() for x in f.readlines()]
@@ -72,6 +76,8 @@ for chunk in chunks:
     processedChunk=expand(outputFolder+'{chunk}.finished',chunk=processedChunk )
     qtlOutput.append(processedChunk)
 
+print(qtlOutput)
+    
 ## flatten these lists
 qtlOutput = [filename for elem in qtlOutput for filename in elem]
 
