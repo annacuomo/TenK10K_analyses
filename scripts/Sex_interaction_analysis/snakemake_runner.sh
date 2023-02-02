@@ -13,11 +13,11 @@ nohup \
     --jobs 20 \
     --cluster \
       "qsub -S /bin/bash \
-      -q {queue} \
+      -q {cluster.queue} \
       -r yes \
-      -pe smp {threads} \  # number of threads
-      -l tmp_requested={memory}G \
-      -l mem_requested={memory}G \
+      -pe smp {cluster.threads} \  # number of threads
+      -l tmp_requested={cluster.memory}G \
+      -l mem_requested={cluster.memory}G \
       -o $LOG \
       -j y \  # this is to join error and log
       -V" \
