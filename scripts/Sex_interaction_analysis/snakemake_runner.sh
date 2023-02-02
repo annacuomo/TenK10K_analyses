@@ -1,5 +1,5 @@
 SNAKEFILE="./snakemake_sex_interaction_singlecells.smk"
-CONFIG="cluster.json"
+CONFIG="./cluster.json"
 LOG="/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs"
 
 nohup \
@@ -8,15 +8,15 @@ nohup \
     --keep-going \
     --rerun-incomplete \
     --printshellcmds \
-    --jobs 20 \
+    --jobs {n_jobs} \
     --cluster \
       "qsub -S /bin/bash \
-      -q short.q \
+      -q {queue} \
       -r yes \
-      -pe smp 20 \  # number of threads
-      -l tmp_requested=20G \
-      -l mem_requested=20G \
+      -pe smp {threads} \  # number of threads
+      -l tmp_requested={memory}G \
+      -l mem_requested={memory}G \
       -o $LOG \
       -j y \  # this is to join error and log
       -V"
-  > $LOG/snake_`date +%Y-%m-%d.%H:%M:%S`.log 
+  > $LOG/nohup_`date +%Y-%m-%d.%H:%M:%S`.log 
