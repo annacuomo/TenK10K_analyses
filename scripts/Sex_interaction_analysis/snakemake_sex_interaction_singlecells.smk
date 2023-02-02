@@ -140,7 +140,7 @@ rule aggregate_qtl_results:
         '/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/top_qtl_results_all.txt'
     run:
         shell(
-            "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing_QTL/minimal_postprocess.py "
+            "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing/minimal_postprocess.py "
             "-id {input.IF} "
             " -od {input.OF} "
             " -sfo -tfb ")
@@ -154,7 +154,7 @@ rule aggregate_qtl_results_all:
         "/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/results_singlecells/qtl_results_all.txt"
     run:
         shell(
-            "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing_QTL/minimal_postprocess.py "
+            "/share/ScratchGeneral/anncuo/jupyter/conda_notebooks/envs/limix_qtl/bin/python /share/ScratchGeneral/anncuo/github_repos/limix_qtl/Limix_QTL/post-processing/minimal_postprocess.py "
             "-id {input.IF} "
             " -od {input.OF} "
             " -sfo -mrp 1 ")
