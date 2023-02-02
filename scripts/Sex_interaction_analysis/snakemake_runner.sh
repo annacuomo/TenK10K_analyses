@@ -18,5 +18,5 @@ nohup \
       -l mem_requested={memory}G \
       -o $LOG \
       -j y \  # this is to join error and log
-      -V"
-  > $LOG/nohup_`date +%Y-%m-%d.%H:%M:%S`.log 
+      -V" \
+  > $LOG/nohup_`date +%Y-%m-%d.%H:%M:%S`.log &
