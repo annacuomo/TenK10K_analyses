@@ -12,8 +12,8 @@ snakemake \
     -q short.q \
     -r yes \
     -pe smp 20 \
-    -l tmp_requested=20 \
-    -l mem_requested=20 \
+    -l tmp_requested=20G \
+    -l mem_requested=20G \
     -e $LOG \
     -o $LOG" \
   > $LOG/snake_`date +%Y-%m-%d.%H:%M:%S`.log 
