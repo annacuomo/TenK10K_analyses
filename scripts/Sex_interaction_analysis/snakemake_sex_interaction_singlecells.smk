@@ -32,7 +32,7 @@ def _multi_arg_both_ends(flag1, flag2, files):
     flag2 = " "+flag2
     return " ".join(flag1 + f + flag2 for f in files)
 
-def flatenChunk(chunk):
+def flattenChunk(chunk):
     return chunk.replace(":", "_").replace("-", "_")
 
 def extendChunk(chunk):
@@ -70,9 +70,11 @@ print(finalQtlRun1)
 with open(chunkFile,'r') as f:
     chunks = [x.strip() for x in f.readlines()]
 
+print(chunks)
+    
 qtlOutput = []
 for chunk in chunks:
-    processedChunk = flatenChunk(chunk)
+    processedChunk = flattenChunk(chunk)
     processedChunk=expand(outputFolder+'{chunk}.finished',chunk=processedChunk )
     qtlOutput.append(processedChunk)
 
