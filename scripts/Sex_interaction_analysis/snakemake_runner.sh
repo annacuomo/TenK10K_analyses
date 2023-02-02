@@ -11,9 +11,9 @@ snakemake \
     "qsub -S /bin/bash \
     -q short.q \
     -r yes \
-    -pe smp 20 \
+    -pe smp 20 \  # number of threads
     -l tmp_requested=20G \
     -l mem_requested=20G \
-    -e $LOG \
     -o $LOG" \
+    -j y \  # this is to join error and log
   > $LOG/snake_`date +%Y-%m-%d.%H:%M:%S`.log 
