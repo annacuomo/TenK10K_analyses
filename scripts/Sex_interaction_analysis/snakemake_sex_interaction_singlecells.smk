@@ -70,7 +70,7 @@ print(finalQtlRun1)
 with open(chunkFile,'r') as f:
     chunks = [x.strip() for x in f.readlines()]
 
-print(head(chunks))
+print(chunks[1:5])
     
 qtlOutput = []
 for chunk in chunks:
@@ -78,7 +78,7 @@ for chunk in chunks:
     processedChunk=expand(outputFolder+'{chunk}.finished',chunk=processedChunk )
     qtlOutput.append(processedChunk)
 
-print(head(qtlOutput))
+print(qtlOutput[1:5])
     
 ## flatten these lists
 qtlOutput = [filename for elem in qtlOutput for filename in elem]
