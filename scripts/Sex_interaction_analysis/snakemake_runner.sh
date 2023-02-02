@@ -15,7 +15,7 @@ nohup \
       "qsub -S /bin/bash \
       -q {cluster.queue} \
       -r yes \
-      -pe smp {cluster.threads} \  # number of threads
+      -pe smp {cluster.threads} \  
       -l tmp_requested={cluster.memory}G \
       -l mem_requested={cluster.memory}G \
       -o $LOG \
