@@ -19,6 +19,6 @@ nohup \
       -l tmp_requested={cluster.memory}G \
       -l mem_requested={cluster.memory}G \
       -o $LOG \
-      -j y \  # this is to join error and log
+      -j y \  
       -V" \
   > $LOG/nohup_`date +%Y-%m-%d.%H:%M:%S`.log &
