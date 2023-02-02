@@ -5,10 +5,12 @@ LOG="/share/ScratchGeneral/anncuo/OneK1K/Sex_interactions/Monocytes/logs"
 nohup \
   snakemake \
     --snakefile $SNAKEFILE \
+    --latency-wait 30 \
+    --cluster-config $CONFIG \
     --keep-going \
     --rerun-incomplete \
     --printshellcmds \
-    --jobs {n_jobs} \
+    --jobs 20 \
     --cluster \
       "qsub -S /bin/bash \
       -q {queue} \
