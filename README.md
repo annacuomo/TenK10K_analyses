@@ -4,12 +4,14 @@ TenK10K phase 1 is the first phase of TenK10K, which aims to collect scRNA-seq d
 The full dataset will include:
 * 5,000 "healthy" individuals, extending the current OneK1K cohort [1]
 * 2,000 heart disease individuals from the BioHEART cohort [2]
-* 1,500 pan-autoimmune disease cohort
-* 1,500 pan-cancer cohort
+* 1,500 pan-cancer cohort (LBIO)
+* 1,000 pan-autoimmune disease cohort (AIM)
+* 600 long COVID cohort (ADAPT)
 
 ### Phase 1
 
-Phase 1 includes the current OneK1K and BioHEART, for >2,000 total people.
+Phase 1 includes the current OneK1K and BioHEART, for ~2,000 total people (1,000 OneK1K individuals, 1,000 BioHEART individuals).
+scRNA-seq was re-generated with a new kit, aiming at ~5,000 cells per individual.
 For all individuals, matched whole-genome sequencing (WGS) data was collected also.
 
 ### Analyses: Rare variant association with single-cell expression
