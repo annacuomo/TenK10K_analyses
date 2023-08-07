@@ -23,5 +23,5 @@ Scripts and notebooks for analyses of the TenK10K datasets on Garvan's high perf
 * [1] Yazar*, Alquicira-Hernandez*, Wing* et al., [Single-cell eQTL mapping identifies cell type–specific genetic control of autoimmune disease](https://www.science.org/doi/10.1126/science.abf3041) Science, 2022.
 * [2] Kott*, Vernon* et al., [Biobanking for discovery of novel cardiovascular biomarkers using imaging-quantified disease burden: protocol for the longitudinal, prospective, BioHEART-CT cohort study](https://bmjopen.bmj.com/content/9/9/e028649) BMJ Open, 2019.
 * [3] liquid biopsies?
-* [4] [AIM: Australia IBD Microbiome](https://bmjopen.bmj.com/content/11/2/e042493.long)
+* [4] Williams et al., [Australia IBD Microbiome (AIM) Study: protocol for a multicentre longitudinal prospective cohort study](https://bmjopen.bmj.com/content/11/2/e042493.long) BMJ Open, 2021.
 * [5] [ADAPT study](https://www.svhs.org.au/research-education/participating-in-research-trials/adapt-study)
