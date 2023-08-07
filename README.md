@@ -6,7 +6,7 @@ The full dataset will include:
 * 2,000 heart disease individuals from the BioHEART cohort [2]
 * 1,500 pan-cancer cohort (LBIO)
 * 1,000 pan-autoimmune disease cohort (AIM)
-* 600 long COVID cohort (ADAPT)
+* 600 long COVID cohort (ADAPT [3])
 
 ### Phase 1
 
@@ -20,6 +20,6 @@ Scripts and notebooks for analyses of the TenK10K datasets on Garvan's high perf
 
 ## References
 
-[1] Yazar*, Alquicira-Hernandez*, Wing* et al., [Single-cell eQTL mapping identifies cell type–specific genetic control of autoimmune disease](https://www.science.org/doi/10.1126/science.abf3041) Science, 2022.
-
-[2] Kott*, Vernon* et al., [Biobanking for discovery of novel cardiovascular biomarkers using imaging-quantified disease burden: protocol for the longitudinal, prospective, BioHEART-CT cohort study](https://bmjopen.bmj.com/content/9/9/e028649) BMJ Open, 2019.
+* [1] Yazar*, Alquicira-Hernandez*, Wing* et al., [Single-cell eQTL mapping identifies cell type–specific genetic control of autoimmune disease](https://www.science.org/doi/10.1126/science.abf3041) Science, 2022.
+* [2] Kott*, Vernon* et al., [Biobanking for discovery of novel cardiovascular biomarkers using imaging-quantified disease burden: protocol for the longitudinal, prospective, BioHEART-CT cohort study](https://bmjopen.bmj.com/content/9/9/e028649) BMJ Open, 2019.
+* [3](https://www.svhs.org.au/research-education/participating-in-research-trials/adapt-study)
