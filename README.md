@@ -12,7 +12,7 @@ The full dataset will include:
 
 Phase 1 includes the current OneK1K and BioHEART, for ~2,000 total people (~1,000 OneK1K individuals, ~1,000 BioHEART individuals).
 scRNA-seq was re-generated with a new kit, aiming at ~5,000 cells per individual.
-For all individuals, matched whole-genome sequencing (WGS) data was collected also.
+For these ~2,000 individuals, matched whole-genome sequencing (WGS) data was collected also.
 
 ### Analyses: Rare variant association with single-cell expression
 
