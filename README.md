@@ -4,13 +4,13 @@ TenK10K phase 1 is the first phase of TenK10K, which aims to collect scRNA-seq d
 The full dataset will include:
 * 5,000 "healthy" individuals, extending the current OneK1K cohort [1]
 * 2,000 heart disease individuals from the BioHEART cohort [2]
-* 1,500 pan-cancer cohort (LBIO)
-* 1,000 pan-autoimmune disease cohort (AIM [3])
-* 600 long COVID cohort (ADAPT [4])
+* 1,500 pan-cancer cohort (LBIO [3])
+* 1,000 pan-autoimmune disease cohort (AIM [4])
+* 600 long COVID cohort (ADAPT [5])
 
 ### Phase 1
 
-Phase 1 includes the current OneK1K and BioHEART, for ~2,000 total people (1,000 OneK1K individuals, 1,000 BioHEART individuals).
+Phase 1 includes the current OneK1K and BioHEART, for ~2,000 total people (~1,000 OneK1K individuals, ~1,000 BioHEART individuals).
 scRNA-seq was re-generated with a new kit, aiming at ~5,000 cells per individual.
 For all individuals, matched whole-genome sequencing (WGS) data was collected also.
 
@@ -22,5 +22,6 @@ Scripts and notebooks for analyses of the TenK10K datasets on Garvan's high perf
 
 * [1] Yazar*, Alquicira-Hernandez*, Wing* et al., [Single-cell eQTL mapping identifies cell type–specific genetic control of autoimmune disease](https://www.science.org/doi/10.1126/science.abf3041) Science, 2022.
 * [2] Kott*, Vernon* et al., [Biobanking for discovery of novel cardiovascular biomarkers using imaging-quantified disease burden: protocol for the longitudinal, prospective, BioHEART-CT cohort study](https://bmjopen.bmj.com/content/9/9/e028649) BMJ Open, 2019.
-* [3] [AIM: Australia IBD Microbiome](https://bmjopen.bmj.com/content/11/2/e042493.long)
-* [4] [ADAPT study](https://www.svhs.org.au/research-education/participating-in-research-trials/adapt-study)
+* [3] liquid biopsies?
+* [4] [AIM: Australia IBD Microbiome](https://bmjopen.bmj.com/content/11/2/e042493.long)
+* [5] [ADAPT study](https://www.svhs.org.au/research-education/participating-in-research-trials/adapt-study)
